@@ -18,43 +18,43 @@ grade =
         "test results": {
           "Test 8": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 8335 9778 9036 8245 9677 5029 5596 2667 2134 5619 9965 9498 5262 6576 2047 7816 7069 5953 4810 8295 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 5344 3021 872 5876 1642 6036 4306 6109 3168 6400 7912 4834 4989 1926 4736 4069 4398 9577 4616 1546 \n"
           }, 
           "Test 9": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 1875 6749 3385 1786 6256 1193 8171 7619 6637 7166 8490 8034 4107 1763 1322 1750 242 2659 4249 3461 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 1495 3173 7354 1140 1317 8049 3309 2962 7065 1686 3337 7647 3736 2862 6794 8774 7110 8180 5406 3686 \n"
           }, 
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 4971 9694 1793 5055 5019 985 5351 7795 6144 3380 2623 6026 4766 7426 2041 500 5585 8394 956 9101 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 9405 7311 3317 9736 2627 3194 9557 772 5768 8396 7626 4057 5855 1344 3516 6194 1087 5009 7684 1536 \n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 2126 8746 2195 4012 8409 6463 1502 470 2142 4688 9881 1986 5706 6133 9711 4667 7866 896 9980 6870 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 7671 1255 5611 6377 1699 3512 6625 530 8486 6111 928 6634 29 1432 1683 3642 5968 8597 7380 8072 \n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 6094 3593 3965 143 8187 284 6216 2784 8230 796 6166 9137 4914 6275 4155 373 959 6245 6375 6583 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 6581 3865 5565 7497 5992 1534 7941 8327 9025 1293 2472 4450 2754 5384 8652 3974 6042 9509 8237 7040 \n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 4994 2913 9126 8585 1258 5508 2 7154 6565 7324 2763 8424 8353 7637 2537 5232 4534 7159 4392 1944 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 6948 3096 8977 5398 7490 7593 6262 1227 2281 9458 2510 7550 5359 3175 8181 2846 7618 6103 9682 4448 \n"
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 8143 7794 8895 4510 1549 6628 9020 3256 2892 1199 8415 5881 3256 684 914 1444 8089 5604 1 739 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 2328 73 8536 566 8564 5426 1483 6641 2407 2019 7103 4237 5617 8223 764 6596 5582 7429 945 8920 \n"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 8630 7980 9197 1087 7365 7621 1586 9919 8485 4358 3035 5723 9435 4715 6135 7164 4799 2051 3190 2202 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 8966 9424 9773 5236 7096 6515 8737 1745 5527 9968 9545 7302 5074 7061 4243 5962 7428 1361 4076 8308 \n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 147 1814 2744 4435 5616 1047 6938 8967 7276 8877 9596 9042 5605 75 9430 3053 1665 4796 826 3023 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 5219 3865 5678 4340 5137 2004 4706 2114 7365 7378 4432 2766 2588 3861 3482 2929 240 7410 9518 4916 \n"
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 6441 6845 7051 9420 4224 2637 7432 8336 8964 8179 7811 9487 7643 5692 3791 4405 6857 2635 5091 2830 \n"
+            "Stderr": "[ERROR] wrong element when insert\n\nError when processing: 5136 7182 3716 48 4001 2530 4104 4023 5893 3210 3613 7626 5850 3393 9595 8880 5859 7058 6542 7969 \n"
           }
         }, 
         "comments": [
