@@ -99,7 +99,7 @@ function iterateGraphSearch() {
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
 		var nbrNodePos = [nbrNode.x,nbrNode.y];
-		if (nbrNode.visited==false && nbrNode.queued && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+dist(nbrNode,currNode)){
+		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+dist(nbrNode,currNode)){
 			nbrNode.distance = currNode.distance + dist(nbrNode,currNode);
 			nbrNode.priority = nbrNode.distance + heuristicDistance(nbrNode);
 			nbrNode.parent = currNode;
@@ -113,8 +113,41 @@ function iterateGraphSearch() {
 
 function iterateGreedyBF() {
 	
+	if(visit_queue.length==0){
+		return "failed";
+	}
 	
+	var currNode = minheap_extract(visit_queue);
+	if(currNode.visited == true)
+		return "iterating";	
+	currNode.visited = true;
+	draw_2D_configuration([currNode.x,currNode.y],"visited");
+	search_visited++;
+	
+	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
+		drawHighlightedPathGraph(currNode);
+		search_iterate = false;
+		return "success";
+	}		
+	
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
+	var numNbrs = 4;
+	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
+		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
+		var nbrNodePos = [nbrNode.x,nbrNode.y];
+		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+dist(nbrNode,currNode)){
+			nbrNode.distance = currNode.distance + dist(nbrNode,currNode);
+			nbrNode.priority = heuristicDistance(nbrNode);
+			nbrNode.parent = currNode;
+			nbrNode.queued = true;
+			minheap_insert(visit_queue,nbrNode);
+			draw_2D_configuration(nbrNodePos,"queued");
+		}
+	}		
+	return "iterating";
 }
+
 
 function iterateBFS() {
 
