@@ -46,6 +46,14 @@ function initSearchGraph() {
 
             // STENCIL: determine whether this graph node should be the start
             //   point for the search
+			if(xpos>=q_init[0]-eps/2 && xpos<q_init[0]+eps/2 && ypos>=q_init[1]-eps/2 && ypos<q_init[1]+eps/2){
+				startNode = G[iind][jind];
+				startNode.distance = 0;
+				startNode.priority = heuristicDistance(startNode);
+				startNode.queued = true;
+				visit_queue.push(startNode);
+				draw_2D_configuration([xpos,ypos],"queued");
+			}
         }
     }
 }
@@ -67,6 +75,99 @@ function iterateGraphSearch() {
     //   testCollision - returns whether a given configuration is in collision
     //   drawHighlightedPathGraph - draws a path back to the start location
     //   draw_2D_configuration - draws a square at a given location
+	
+	if(visit_queue.length==0){
+		return "failed";
+	}
+	
+	var currNode = minheap_extract(visit_queue);
+	if(currNode.visited == true)
+		return "iterating";	
+	currNode.visited = true;
+	draw_2D_configuration([currNode.x,currNode.y],"visited");
+	search_visited++;
+	
+	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
+		drawHighlightedPathGraph(currNode);
+		search_iterate = false;
+		return "success";
+	}		
+	
+	var nbrRelativeX = [-1,0,1,-1,1,-1,0,1];
+	var nbrRelativeY = [-1,-1,-1,0,0,1,1,1];
+	var numNbrs = 8;
+	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
+		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
+		var nbrNodePos = [nbrNode.x,nbrNode.y];
+		if (nbrNode.visited==false && nbrNode.queued && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+dist(nbrNode,currNode)){
+			nbrNode.distance = currNode.distance + dist(nbrNode,currNode);
+			nbrNode.priority = nbrNode.distance + heuristicDistance(nbrNode);
+			nbrNode.parent = currNode;
+			nbrNode.queued = true;
+			minheap_insert(visit_queue,nbrNode);
+			draw_2D_configuration(nbrNodePos,"queued");
+		}
+	}		
+	return "iterating";
+}
+
+function iterateGreedyBF() {
+	
+	
+}
+
+function iterateBFS() {
+
+}
+
+function iterateDFS() {
+	
+	if(visit_queue.length==0){
+		return "failed";
+	}
+	
+	var currNode = visit_queue.pop();
+	if(currNode.visited == true)
+		return "iterating";	
+	currNode.visited = true;
+	draw_2D_configuration([currNode.x,currNode.y],"visited");
+	search_visited++;
+	
+	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
+		drawHighlightedPathGraph(currNode);
+		search_iterate = false;
+		return "success";
+	}		
+	
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
+	var numNbrs = 4;
+	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
+		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
+		var nbrNodePos = [nbrNode.x,nbrNode.y];
+		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+eps){
+			nbrNode.distance = currNode.distance + eps;
+			nbrNode.parent = currNode;
+			nbrNode.queued = true;
+			visit_queue.push(nbrNode);
+			draw_2D_configuration(nbrNodePos,"queued");
+		}
+	}		
+	return "iterating";
+	
+}
+
+//////////////////////////////////////////////////
+/////     HELPER FUNCTIONS
+//////////////////////////////////////////////////
+
+// function to return distance between nodes
+function dist(node1,node2){
+	return Math.sqrt((node1.x-node2.x)*(node1.x-node2.x) + (node1.y-node2.y)*(node1.y-node2.y));
+}
+
+function heuristicDistance(node){
+	return Math.sqrt((node.x-q_goal[0])*(node.x-q_goal[0]) + (node.y-q_goal[1])*(node.y-q_goal[1]));
 }
 
 //////////////////////////////////////////////////
@@ -76,3 +177,46 @@ function iterateGraphSearch() {
     // STENCIL: implement min heap functions for graph search priority queue.
     //   These functions work use the 'priority' field for elements in graph.
 
+
+// defining 'heapifyTopDown' function for minheap_extract
+function heapifyTopDown (heap, i){
+	min_idx = i;
+	left = 2*i+1;
+	right = 2*i+2;
+	if(left<heap.length && heap[left].priority < heap[min_idx].priority)
+		min_idx = left;
+	if(right<heap.length && heap[right].priority < heap[min_idx].priority)
+		min_idx = right;
+	if(min_idx!=i){
+		var temp = heap[i];
+		heap[i] = heap[min_idx];
+		heap[min_idx] = temp;
+		heapifyTopDown(heap,min_idx);
+	}
+}
+
+// defining 'heapifyTopDown' function for minheap_insert
+function heapifyBottomUp (heap, i){
+	parent = Math.floor((i-1)/2);
+	if(parent>=0 && heap[i].priority < heap[parent].priority){
+		var temp = heap[i];
+		heap[i] = heap[parent];
+		heap[parent] = temp;
+		heapifyBottomUp(heap,parent);
+	}
+}
+
+// define insert function for min binary heap
+function minheap_insert(heap, new_element) {
+	heap.push(new_element);
+	heapifyBottomUp(heap,heap.length-1);
+}
+
+// define extract function for min binary heap
+function minheap_extract(heap) {
+	root = heap[0];
+	heap[0] = heap[heap.length-1];
+	heap.pop();
+	heapifyTopDown(heap,0);
+	return root;
+}

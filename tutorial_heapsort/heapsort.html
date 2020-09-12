@@ -12,7 +12,7 @@
     Laboratory for Perception RObotics and Grounded REasoning Systems
     University of Michigan
 
-    License: Michigan Honor License 
+    License: Michigan Honor License
 
 |\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/|
 ||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/||\/
@@ -22,30 +22,30 @@
 
 <!DOCTYPE html>
 <html>
-    <!-- 
-        This is a comment in JavaScript.  It will be ignored in the document. 
+    <!--
+        This is a comment in JavaScript.  It will be ignored in the document.
     -->
 
-    <head> 
-        <!-- 
-            head element contain document elements not intended to 
+    <head>
+        <!--
+            head element contain document elements not intended to
             be rendered directly
         -->
 
         <!-- the title of the document -->
-        <title>My Heap Sort</title> 
+        <title>My Heap Sort</title>
 
     </head>
 
     <body onload=startMeUp()>
-        <!-- 
+        <!--
             body element contains document elements for the browser to display;
             this element will call the function startMeUp once loaded.
         -->
-    
+
         <!-- a header text element with a link to my website -->
         <a href="http://ohseejay.org"><h1>My Heap Sort</h1></a>
-    
+
         <!-- a 2D drawing canvas element; we will draw a heap here -->
         <canvas width=900 height=200 id="myCanvas"></canvas>
 
@@ -54,8 +54,8 @@
   </body>
 </html>
 
-<!-- 
-    A script element contains JavaScript code for the browser to execute. 
+<!--
+    A script element contains JavaScript code for the browser to execute.
         Script code could be in another file, specified in the "src" attribute,
         as in the case below for your heap code.
 
@@ -63,17 +63,16 @@
         two function methods for inserting and extracting heap elements.
 -->
 
-<!--  you will want to uncomment this tag
 <script src="heap.js"></script>
--->
- 
+
+
 
 <!--
     Script code could also be contained directed within the HTML element tags,
         as in the number array generation and sorting code below.
 
     Note: this code is invoked by the body element calling startMeUp().
-   
+
     Note: it is bad form to place a script element outside the document; this
        placement is done for the purpose of clarity.
 -->
@@ -91,14 +90,14 @@ function addHTMLLine(element,text) {
     document.getElementById(element).innerHTML += "<br>" + text;
 }
 
-// the startMeUp function will generate, heapify, and sort an array of numbers 
+// the startMeUp function will generate, heapify, and sort an array of numbers
 function startMeUp () {
 
     // alert will pop up a dialog box with text that will pause execution
     //   until the appropriate user action is taken
-        alert("woo haa");  // you will want to comment out this call
- 
-    // console.log() prints the output of a JavaScript expression to 
+    //    alert("woo haa");  // you will want to comment out this call
+
+    // console.log() prints the output of a JavaScript expression to
     //   the brower's console; and much less distracting than alert
     console.log("assigning string to output element in the document");
     document.getElementById("output").innerHTML = "check";
@@ -132,7 +131,7 @@ function startMeUp () {
 
         console.log("heap implementation not found; return without sorting");
         addHTMLLine("output","my heaping functions are not yet implemented" );
-        return;  // return will end the execution of the function 
+        return;  // return will end the execution of the function
     }
     else {
         // Note: once implemented, the minheaper should be of type 'object',
@@ -151,7 +150,7 @@ function startMeUp () {
         console.log("appending current heap state to output object");
         output_string = "heap (insert " + numbers[i] + "): "; //
         for (j=0;j<numbers_heap.length;j++) {
-            output_string += numbers_heap[j] + " "; // 
+            output_string += numbers_heap[j] + " "; //
         }
         addHTMLLine("output",output_string);
     }
@@ -187,13 +186,13 @@ function startMeUp () {
         if (typeof heap[2*(index)+2] !== 'undefined')
             drawHeapNode(heap,2*(index)+2,(x1+x2)/2,x2,depth+1);
     }
-    
+
     console.log("sorting numbers that have been heapified");
     numbers_sorted = [];
     for (i=0;i<numbers.length;i++) {
         numbers_sorted[i] = minheaper.extract(numbers_heap);
 
-        output_string = "heap (extract " + numbers_sorted[i] + "): "; // 
+        output_string = "heap (extract " + numbers_sorted[i] + "): "; //
         for (j=0;j<numbers_heap.length;j++) {
             output_string += numbers_heap[j] + " "; //
         }
@@ -202,7 +201,7 @@ function startMeUp () {
         addHTMLLine("output",output_string);
     }
 
-    //numbers_sorted = numbers; // just for testing 
+    //numbers_sorted = numbers; // just for testing
     console.log("outputting sorted array of numbers");
     output_string = "<a href='get_sorted.jpg'>sorted</a>: "; // create empty string
     // Note: JavaScript allows double and single quotes for containing strings
@@ -221,6 +220,3 @@ function startMeUp () {
 }
 
 </script>
-
-
-
