@@ -93,9 +93,9 @@ function iterateGraphSearch() {
 		return "success";
 	}		
 	
-	var nbrRelativeX = [-1,0,1,-1,1,-1,0,1];
-	var nbrRelativeY = [-1,-1,-1,0,0,1,1,1];
-	var numNbrs = 8;
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
+	var numNbrs = 4;
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
 		var nbrNodePos = [nbrNode.x,nbrNode.y];
