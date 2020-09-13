@@ -91,7 +91,7 @@ function iterateGraphSearch() {
 	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
 		drawHighlightedPathGraph(currNode);
 		search_iterate = false;
-		return "success";
+		return "succeeded";
 	}		
 	
 	var nbrRelativeX = [1,-1,0,0];
@@ -129,7 +129,7 @@ function iterateGreedyBF() {
 	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
 		drawHighlightedPathGraph(currNode);
 		search_iterate = false;
-		return "success";
+		return "succeeded";
 	}		
 	
 	var nbrRelativeX = [1,-1,0,0];
@@ -168,7 +168,7 @@ function iterateBFS() {
 	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
 		drawHighlightedPathGraph(currNode);
 		search_iterate = false;
-		return "success";
+		return "succeeded";
 	}		
 	
 	var nbrRelativeX = [1,-1,0,0];
@@ -206,7 +206,7 @@ function iterateDFS() {
 	if(currNode.x>=q_goal[0]-eps/2 && currNode.x<q_goal[0]+eps/2 && currNode.y>=q_goal[1]-eps/2 && currNode.y<q_goal[1]+eps/2){
 		drawHighlightedPathGraph(currNode);
 		search_iterate = false;
-		return "success";
+		return "succeeded";
 	}		
 	
 	var nbrRelativeX = [1,-1,0,0];
