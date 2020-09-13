@@ -77,6 +77,7 @@ function iterateGraphSearch() {
     //   draw_2D_configuration - draws a square at a given location
 	
 	if(visit_queue.length==0){
+		search_iterate = false;
 		return "failed";
 	}
 	
@@ -114,6 +115,7 @@ function iterateGraphSearch() {
 function iterateGreedyBF() {
 	
 	if(visit_queue.length==0){
+		search_iterate = false;
 		return "failed";
 	}
 	
@@ -152,6 +154,7 @@ function iterateGreedyBF() {
 function iterateBFS() {
 	
 	if(visit_queue.length==0){
+		search_iterate = false;
 		return "failed";
 	}
 	
@@ -189,6 +192,7 @@ function iterateBFS() {
 function iterateDFS() {
 	
 	if(visit_queue.length==0){
+		search_iterate = false;
 		return "failed";
 	}
 	
@@ -245,9 +249,9 @@ function heuristicDistance(node){
 
 // defining 'heapifyTopDown' function for minheap_extract
 function heapifyTopDown (heap, i){
-	min_idx = i;
-	left = 2*i+1;
-	right = 2*i+2;
+	var min_idx = i;
+	var left = 2*i+1;
+	var right = 2*i+2;
 	if(left<heap.length && heap[left].priority < heap[min_idx].priority)
 		min_idx = left;
 	if(right<heap.length && heap[right].priority < heap[min_idx].priority)
@@ -262,7 +266,7 @@ function heapifyTopDown (heap, i){
 
 // defining 'heapifyTopDown' function for minheap_insert
 function heapifyBottomUp (heap, i){
-	parent = Math.floor((i-1)/2);
+	var parent = Math.floor((i-1)/2);
 	if(parent>=0 && heap[i].priority < heap[parent].priority){
 		var temp = heap[i];
 		heap[i] = heap[parent];
@@ -279,9 +283,9 @@ function minheap_insert(heap, new_element) {
 
 // define extract function for min binary heap
 function minheap_extract(heap) {
-	root = heap[0];
+	var topElem = heap[0];
 	heap[0] = heap[heap.length-1];
 	heap.pop();
 	heapifyTopDown(heap,0);
-	return root;
+	return topElem;
 }

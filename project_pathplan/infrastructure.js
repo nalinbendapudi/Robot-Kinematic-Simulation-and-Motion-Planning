@@ -294,7 +294,7 @@ function initSearch() {
 
     // specify minimum number of milliseconds between successive search
     //   iterations
-    min_msec_between_iterations = 2;
+    min_msec_between_iterations = 20;
 
     // create textbar DOM element for text output to browser window
     textbar = document.createElement('div');
