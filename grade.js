@@ -66,23 +66,23 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "(node:3058) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "(node:3065) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "(node:3044) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "(node:3051) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "(node:3072) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }
         }, 
         "comments": [
@@ -100,23 +100,23 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "(node:3134) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "(node:3141) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "(node:3116) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "(node:3126) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "(node:3148) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }
         }, 
         "comments": [
@@ -128,23 +128,23 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "(node:3095) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "(node:3102) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "(node:3079) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Search time out\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "(node:3088) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Wrong result\n"
+            "Stderr": "[ERROR]: Wrong result\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "(node:3109) [DEP0016] DeprecationWarning: 'root' is deprecated, use 'global'\n[ERROR]: Search time out\n"
+            "Stderr": "[ERROR]: Search time out\n"
           }
         }, 
         "comments": [
