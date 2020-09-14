@@ -94,8 +94,8 @@ function iterateGraphSearch() {
 		return "succeeded";
 	}		
 	
-	var nbrRelativeX = [-1,0,0,1];
-	var nbrRelativeY = [0,-1,1,0];
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
 	var numNbrs = 4;
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
@@ -132,20 +132,25 @@ function iterateGreedyBF() {
 		return "succeeded";
 	}		
 	
-	
-	var nbrRelativeX = [-1,0,0,1];
-	var nbrRelativeY = [0,-1,1,0];
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
 	var numNbrs = 4;
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
 		var nbrNodePos = [nbrNode.x,nbrNode.y];
 		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+dist(nbrNode,currNode)){
-			nbrNode.distance = currNode.distance + dist(nbrNode,currNode);
-			nbrNode.priority = heuristicDistance(nbrNode);
-			nbrNode.parent = currNode;
-			nbrNode.queued = true;
-			minheap_insert(visit_queue,nbrNode);
-			draw_2D_configuration(nbrNodePos,"queued");
+			if (nbrNode.queued){
+				nbrNode.distance = currNode.distance + eps;
+				nbrNode.parent = currNode;
+			}
+			else{
+				nbrNode.distance = currNode.distance + dist(nbrNode,currNode);
+				nbrNode.priority = heuristicDistance(nbrNode);
+				nbrNode.parent = currNode;
+				nbrNode.queued = true;
+				minheap_insert(visit_queue,nbrNode);
+				draw_2D_configuration(nbrNodePos,"queued");
+			}
 		}
 	}		
 	return "iterating";
@@ -172,14 +177,13 @@ function iterateBFS() {
 		return "succeeded";
 	}		
 	
-	
-	var nbrRelativeX = [-1,0,0,1];
-	var nbrRelativeY = [0,-1,1,0];
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
 	var numNbrs = 4;
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
 		var nbrNodePos = [nbrNode.x,nbrNode.y];
-		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+eps){
+		if (nbrNode.visited==false && nbrNode.queued==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+eps){
 			nbrNode.distance = currNode.distance + eps;
 			nbrNode.parent = currNode;
 			nbrNode.queued = true;
@@ -211,19 +215,24 @@ function iterateDFS() {
 		return "succeeded";
 	}		
 	
-	
-	var nbrRelativeX = [-1,0,0,1];
-	var nbrRelativeY = [0,-1,1,0];
+	var nbrRelativeX = [1,-1,0,0];
+	var nbrRelativeY = [0,0,1,-1];
 	var numNbrs = 4;
 	for(var nbrIndex=0; nbrIndex<numNbrs; nbrIndex++){
 		var nbrNode = G[currNode.i+nbrRelativeX[nbrIndex]][currNode.j+nbrRelativeY[nbrIndex]];
 		var nbrNodePos = [nbrNode.x,nbrNode.y];
 		if (nbrNode.visited==false && testCollision(nbrNodePos)==false && nbrNode.distance>currNode.distance+eps){
-			nbrNode.distance = currNode.distance + eps;
-			nbrNode.parent = currNode;
-			nbrNode.queued = true;
-			visit_queue.push(nbrNode);
-			draw_2D_configuration(nbrNodePos,"queued");
+			if (nbrNode.queued){
+				nbrNode.distance = currNode.distance + eps;
+				nbrNode.parent = currNode;
+			}
+			else{
+				nbrNode.distance = currNode.distance + eps;
+				nbrNode.parent = currNode;
+				nbrNode.queued = true;
+				visit_queue.push(nbrNode);
+				draw_2D_configuration(nbrNodePos,"queued");
+			}
 		}
 	}		
 	return "iterating";	
