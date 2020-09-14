@@ -62,31 +62,31 @@ grade =
         ]
       }, 
       "PathPlan_AStar": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }
         }, 
         "comments": [
-          "0 out of 5 test cases passed"
+          "5 out of 5 test cases passed"
         ]
       }, 
       "PathPlan_DFS": {
@@ -96,43 +96,43 @@ grade =
         ]
       }, 
       "PathPlan_BFS": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }
         }, 
         "comments": [
-          "0 out of 5 test cases passed"
+          "5 out of 5 test cases passed"
         ]
       }, 
       "PathPlan_BestFirst": {
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Wrong result\n"
+            "Status": "Succeed", 
+            "Stderr": "N/A"
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -148,7 +148,7 @@ grade =
           }
         }, 
         "comments": [
-          "0 out of 5 test cases passed"
+          "2 out of 5 test cases passed"
         ]
       }, 
       "Pendularm_Euler": {
