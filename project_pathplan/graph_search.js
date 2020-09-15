@@ -77,10 +77,14 @@ function iterateGraphSearch() {
     //   draw_2D_configuration - draws a square at a given location
 	
 	switch (search_alg) {
-        case "depth-first": iterateDFS(); break;
-        case "breadth-first": iterateBFS(); break;
-        case "greedy-best-first": iterateGreedyBF(); break;
-        case "A-star": iterateAStar(); break;
+        case "depth-first": 
+			return iterateDFS(); 
+        case "breadth-first": 
+			return iterateBFS(); 
+        case "greedy-best-first": 
+			return iterateGreedyBF(); 
+        case "A-star": 
+			return iterateAStar(); 
     }    
 }
 
