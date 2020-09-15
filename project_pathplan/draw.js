@@ -73,7 +73,7 @@ function drawHighlightedPathGraph(current_node) {
     path_length = 0;
     q_path_ref = current_node;
     while (q_path_ref.distance > 0) {
-		if (testCollision([q_path_ref.x, q_path_ref.y])) {
+        if (testCollision([q_path_ref.x, q_path_ref.y])) {
             // if node is in collision, draw it and the next line in red
             ctx.fillStyle = collision;
             ctx.strokeStyle = collision;
@@ -229,14 +229,8 @@ function animate() {
         // call iteration for the selected search algorithm
         switch (search_alg) {
             case "depth-first":
-				search_result = iterateDFS();
-				break;
             case "breadth-first":
-				search_result = iterateBFS();
-				break;
             case "greedy-best-first":
-				search_result = iterateGreedyBF();
-				break;
             case "A-star":
                 search_result = iterateGraphSearch();
                 break;

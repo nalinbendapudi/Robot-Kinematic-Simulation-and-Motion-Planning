@@ -76,6 +76,16 @@ function iterateGraphSearch() {
     //   drawHighlightedPathGraph - draws a path back to the start location
     //   draw_2D_configuration - draws a square at a given location
 	
+	switch (search_alg) {
+        case "depth-first": iterateDFS(); break;
+        case "breadth-first": iterateBFS(); break;
+        case "greedy-best-first": iterateGreedyBF(); break;
+        case "A-star": iterateAStar(); break;
+    }    
+}
+
+function iterateAStar() {	
+	
 	if(visit_queue.length==0){
 		search_iterate = false;
 		return "failed";
