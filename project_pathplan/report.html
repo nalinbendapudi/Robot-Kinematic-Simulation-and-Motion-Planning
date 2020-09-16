@@ -1,0 +1,282 @@
+<head>
+<title> Path Planning Algorithms</title>
+<center>
+<h1>ROB 511 Assignment 1: Path Planning</h1>
+<h3>Nalin Bendapudi
+<br><a href = "https://github.com/nalinbendapudi/Autonomous-Robotics">(https://github.com/nalinbendapudi/Autonomous-Robotics)</a></h3>
+</center>
+</head>
+
+<h2>1. Priority Queue (Heap) - Insertion and Deletion</h2>
+
+<p>Priority Queue, specifically the Min-(Binary) Heap is a binary tree data structure which ensures that the minimum element is always at the top or root of the tree.
+Insertions and Deletions in the Min-Heap take O(log n) time. Heaps can be implemented using arrays instead of trees by considering the parent of a node to be the elemnt at half the index value.</p>
+<p>Insertion: 'Push' the new element to the end of the array and recursively swap with its parent until its parent is less than itself.
+<br>Extraction: Swap the first element (root) with the last element and 'pop' it out. Now swap the first element with its smallest-value child  recursively until it's greater than both its children.</p>
+
+<p>An array can be sorted by inserting all its elements into a heap, and then extracting all elements one by one</p>
+<figure>
+    <img src="images/heapsort.png" alt="heap" width="500">
+    <figcaption>Figure 1. Min-heap Implementation</figcaption>
+</figure>
+
+<h2>2. Graph Search Algorithms</h2>
+<p>The general idea for any graph search algorithm is the following:</p>
+
+<ul>
+<li>Initialize distances to all nodes to INF. Set distance of start node to 0</li>
+<li>Input the start node into a visit_queue (could be implemented using queue, stack or heap)</li>
+<li>While visit_queue is not empty, do the following:</li>
+	<ul>
+	<li>Remove the top element from visit_queue</li>
+	<li>If the element is the goal node, we are done. Exit the loop</li>
+	<li>For all unvisited and unblocked neighbours of this node, do the following: </li>
+		<ul>
+		<li>If the distance to the neighbour decreases by going through the current node, add this neighbour to the visit_queue</li>
+		<li>Set the 'parent' of the neighbour to the current node.
+		</ul>
+	</ul>
+	<li> If visit_queue is empty and goal hasn't been reached, then there is no path to the goal.
+</ul>
+
+<p>Different path planning algorithms differ in the data structure they use to implement the visit_queue and if the data structure is ordered by some property, then different path planning algorithms may differ by this property as well.</p>
+
+<h2>3. Breadth First Search</h2>
+
+<p>In Breadth First Search (BFS), a queue data structure is used to store the visit_queue. Queue is a FIFO data structure.</p>
+
+<p>Here's how BFS performs in various scenarios:</p>
+
+<figure>
+    <img src="images/bfs-empty.png" alt="bfs-1" width="500">
+    <figcaption>Figure 2. Path planned using Breadth First Search on 'empty' map. Search Iterations = 3501, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/bfs-narrow1.png" alt="bfs-2" width="500">
+    <figcaption>Figure 3. Path planned using Breadth First Search on 'narrow1' map. Search Iterations = 1567, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/bfs-narrow2.png" alt="bfs-3" width="500">
+    <figcaption>Figure 4. Path planned using Breadth First Search on 'narrow2' map. Search Iterations = 2094, Path length = 11.40</figcaption>
+</figure>
+<figure>
+    <img src="images/bfs-misc.png" alt="bfs-4" width="500">
+    <figcaption>Figure 5. Path planned using Breadth First Search on 'misc' map. Search Iterations = 3235, Path length = 9.80</figcaption>
+</figure>
+<figure>
+    <img src="images/bfs-3sec.png" alt="bfs-5" width="500">
+    <figcaption>Figure 6. Path planned using Breadth First Search on 'three-sections' map. Search Iterations = 3165, Path length = 14.20</figcaption>
+</figure>
+
+<h3 style = "margin-bottom: 0px;">Discussion</h3>
+<ul>
+<li>BFS returns the optimal (shortest) path between start and goal.</li>
+<li>Because BFS uses FIFO data structure it explores all its neighbours first before exploring any of its neighbour's neighbours</li>
+</ul>
+
+
+
+
+<h2>4. Depth First Search</h2>
+
+<p>In Depth First Search (DFS), a stack data structure is used to store the visit_queue. Stack is a LIFO data structure.</p>
+
+<p>Here's how DFS performs in various scenarios:</p>
+
+<figure>
+    <img src="images/dfs-empty.png" alt="dfs-1" width="500">
+    <figcaption>Figure 7. Path planned using Depth First Search on 'empty' map. Search Iterations = 1782, Path length = 130.40</figcaption>
+</figure>
+<figure>
+    <img src="images/dfs-narrow1.png" alt="dfs-2" width="500">
+    <figcaption>Figure 8. Path planned using Depth First Search on 'narrow1' map. Search Iterations = 1293, Path length = 76.20</figcaption>
+</figure>
+<figure>
+    <img src="images/dfs-narrow2.png" alt="dfs-3" width="500">
+    <figcaption>Figure 9. Path planned using Depth First Search on 'narrow2' map. Search Iterations = 1181, Path length = 65.00</figcaption>
+</figure>
+<figure>
+    <img src="images/dfs-misc.png" alt="dfs-4" width="500">
+    <figcaption>Figure 10. Path planned using Depth First Search on 'misc' map. Search Iterations = 2289, Path length = 98.20</figcaption>
+</figure>
+<figure>
+    <img src="images/dfs-3sec.png" alt="dfs-5" width="500">
+    <figcaption>Figure 11. Path planned using Depth First Search on 'three-sections' map. Search Iterations = 1629, Path length = 98.00</figcaption>
+</figure>
+
+<h3 style = "margin-bottom: 0px;">Discussion</h3>
+<ul>
+<li>DFS doesn't return the optimal (shortest) path between start and goal. Path lengths for DFS are the largest among all four algorithms.</li>
+<li>Because DFS uses LIFO data structure it explores all nodes in a particular direction before turning to a different direction</li>
+<li>The path length and number of iterations is dependent on the order in which DFS visits its neighbours.</li>
+</ul>
+
+
+
+
+<h2>5. A-star Search</h2>
+
+<p>In A-star Search (A*), a min-heap data structure is used to store the visit_queue.
+<br>The f-cost is used to prioritize nodes in the min-heap.
+<br>f-cost of a node = dist from start node (a.k.a. g-cost) + heuristic distance to the goal node (a.k.a. h-cost)</p>
+
+<p>Here's how A* performs in various scenarios:</p>
+
+<figure>
+    <img src="images/astar-empty.png" alt="astar-1" width="500">
+    <figcaption>Figure 12. Path planned using A-star Search on 'empty' map. Search Iterations = 2362, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/astar-narrow1.png" alt="astar-2" width="500">
+    <figcaption>Figure 13. Path planned using A-star Search on 'narrow1' map. Search Iterations = 991, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/astar-narrow2.png" alt="astar-3" width="500">
+    <figcaption>Figure 14. Path planned using A-star Search on 'narrow2' map. Search Iterations = 1593, Path length = 11.40</figcaption>
+</figure>
+<figure>
+    <img src="images/astar-misc.png" alt="astar-4" width="500">
+    <figcaption>Figure 15. Path planned using A-star Search on 'misc' map. Search Iterations = 2812, Path length = 9.80</figcaption>
+</figure>
+<figure>
+    <img src="images/astar-3sec.png" alt="astar-5" width="500">
+    <figcaption>Figure 16. Path planned using A-star Search on 'three-sections' map. Search Iterations = 2479, Path length = 14.20</figcaption>
+</figure>
+
+<h3 style = "margin-bottom: 0px;">Discussion</h3>
+<ul>
+<li>A* returns the optimal (shortest) path between start and goal.</li>
+<li>Because A* uses min-heap data structure and prioritises minimum f-cost, it strikes a perfect balance between exploring neighbouring nodes and exploring nodes which are closer to the goal.</li>
+<li>A* is faster than BFS, i.e. number of iterations required to reach the goal is less than that of BFS. This is also because of the fact that A* prioritizes visiting nodes with smaller f-cost.<\li>
+</ul>
+
+
+
+
+<h2>6. Greedy Best First Search</h2>
+
+<p>In Greedy Best First Search (GreedyBF), a min-heap data structure is used to store the visit_queue.
+<br>The h-cost is used to prioritize nodes in the min-heap.
+<br>h-cost of a given node =  heuristic distance to the goal node (calculated as the euclidean distance between the given node and the goal)</p>
+
+<p>Here's how GreedyBF performs in various scenarios:</p>
+
+<figure>
+    <img src="images/greedy-empty.png" alt="greedy-1" width="500">
+    <figcaption>Figure 17. Path planned using Greedy First Search on 'empty' map. Search Iterations = 81, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/greedy-narrow1.png" alt="greedy-2" width="500">
+    <figcaption>Figure 18. Path planned using Greedy First Search on 'narrow1' map. Search Iterations = 81, Path length = 8.00</figcaption>
+</figure>
+<figure>
+    <img src="images/greedy-narrow2.png" alt="greedy-3" width="500">
+    <figcaption>Figure 19. Path planned using Greedy First Search on 'narrow2' map. Search Iterations = 138, Path length = 11.40</figcaption>
+</figure>
+<figure>
+    <img src="images/greedy-misc.png" alt="greedy-4" width="500">
+    <figcaption>Figure 20. Path planned using Greedy First Search on 'misc' map. Search Iterations = 2074, Path length = 17.80</figcaption>
+</figure>
+<figure>
+    <img src="images/greedy-3sec.png" alt="greedy-5" width="500">
+    <figcaption>Figure 21. Path planned using Greedy First Search on 'three-sections' map. Search Iterations = 906, Path length = 14.20</figcaption>
+</figure>
+
+<h3 style = "margin-bottom: 0px;">Discussion</h3>
+<li>GreedyBF doesn't return the optimal (shortest) path between start and goal. This can be seen from 'narrow2' map.</li>
+<li>Because GreedyBF uses min-heap data structure and prioritises minimum h-cost, it always explores the nodes which are heuristically closer to the goal. This property of blindly going towards the goal makes GreedyBF non-optimal for certain obstacle maps.</li>
+<li>GreedyBF is faster than all other algorithms for the cases in which it returns the optimal path</li>
+</ul>
+
+
+<h2>Results Summary</h2>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+    </style>
+<table class="tg">
+    <caption style="text-align:left">Table 1. Number of Iterations and Path Lengths for the search algorithms implemented.</caption>
+    <thead>
+      <tr>
+        <th class="tg-0pky" rowspan="2"></th>
+        <th class="tg-c3ow" colspan="2">'empty' map</th>
+        <th class="tg-c3ow" colspan="2">'misc' map</th>
+        <th class="tg-c3ow" colspan="2">'narrow1' map</th>
+        <th class="tg-c3ow" colspan="2">'narrow2' map</th>
+        <th class="tg-c3ow" colspan="2">'three-sections' map</th>
+      </tr>
+      <tr>
+        <td class="tg-0pky">Search Iterations</td>
+        <td class="tg-0pky">Path Length</td>
+        <td class="tg-0pky">Search Iterations</td>
+        <td class="tg-0pky">Path Length</td>
+        <td class="tg-0pky">Search Iterations</td>
+        <td class="tg-0pky">Path Length</td>
+        <td class="tg-0pky">Search Iterations</td>
+        <td class="tg-0pky">Path Length</td>
+        <td class="tg-0pky">Search Iterations</td>
+        <td class="tg-0pky">Path Length</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-0pky">Breadth First Search</td>
+        <td class="tg-0pky">3501</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">1567</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">2094</td>
+        <td class="tg-0pky">11.40</td>
+        <td class="tg-0pky">3235</td>
+        <td class="tg-0pky">9.80</td>
+        <td class="tg-0pky">3165</td>
+        <td class="tg-0pky">14.20</td>
+      </tr>
+      <tr>
+        <td class="tg-0pky">Depth First Search</td>
+        <td class="tg-0pky">1782</td>
+        <td class="tg-0pky">130.40</td>
+        <td class="tg-0pky">1293</td>
+        <td class="tg-0pky">76.20</td>
+        <td class="tg-0pky">1181</td>
+        <td class="tg-0pky">65.00</td>
+        <td class="tg-0pky">2289</td>
+        <td class="tg-0pky">98.20</td>
+        <td class="tg-0pky">1629</td>
+        <td class="tg-0pky">98.00</td>
+      </tr>
+      <tr>
+        <td class="tg-0pky">A-star Search</td>
+        <td class="tg-0pky">2362</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">991</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">1593</td>
+        <td class="tg-0pky">11.40</td>
+        <td class="tg-0pky">2812</td>
+        <td class="tg-0pky">9.80</td>
+        <td class="tg-0pky">2479</td>
+        <td class="tg-0pky">14.20</td>
+      </tr>
+      <tr>
+        <td class="tg-0pky">Greedy Best First Search</td>
+        <td class="tg-0pky">81</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">81</td>
+        <td class="tg-0pky">8.00</td>
+        <td class="tg-0pky">138</td>
+        <td class="tg-0pky">11.40</td>
+        <td class="tg-0pky">2074</td>
+        <td class="tg-0pky">17.80</td>
+        <td class="tg-0pky">906</td>
+        <td class="tg-0pky">14.20</td>
+      </tr>
+    </tbody>
+</table>
+
