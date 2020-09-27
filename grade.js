@@ -1,4 +1,4 @@
-//CI grader generates report at 26-09-2020-18-06-47
+//CI grader generates report at 27-09-2020-00-07-55
 grade = 
 {
   "bnalin": {
@@ -185,15 +185,15 @@ grade =
         ]
       }, 
       "Pendularm_PID": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: PID test with velocity verlet failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "Pendularm_Verlet": {
