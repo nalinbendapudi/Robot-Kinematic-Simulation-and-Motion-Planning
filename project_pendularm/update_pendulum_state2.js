@@ -29,20 +29,22 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 		pendulum.angle[1] = 2*pendulum.angle[1] - pendulum.angle_previous[1] + pendulum.angle_dot_dot[1]*dt*dt
 		pendulum.angle_dot[1] = (pendulum.angle[1] - pendulum.angle_previous[1]) / (2*dt)
 		pendulum.angle_previous[1] = temp1;
-    
+		
 	}
     else if (numerical_integrator === "velocity verlet") {
 
     // STENCIL: a correct velocity Verlet integrator is REQUIRED for assignment
-		acc = pendulum_acceleration(pendulum,gravity);
+		
+		pendulum.angle_previous[0] = pendulum.angle[0];
+		pendulum.angle_previous[1] = pendulum.angle[1];
 		
 		pendulum.angle[0] += pendulum.angle_dot[0]*dt + pendulum.angle_dot_dot[0]*dt*dt/2;
-		pendulum.angle_dot[0] += (pendulum.angle_dot_dot[0] + acc[0])/2*dt
-		pendulum.angle_previous[0] = pendulum.angle[0];
-		
 		pendulum.angle[1] += pendulum.angle_dot[1]*dt + pendulum.angle_dot_dot[1]*dt*dt/2;
+		
+		acc = pendulum_acceleration(pendulum,gravity);
+		
+		pendulum.angle_dot[0] += (pendulum.angle_dot_dot[0] + acc[0])/2*dt
 		pendulum.angle_dot[1] += (pendulum.angle_dot_dot[1] + acc[1])/2*dt
-		pendulum.angle_previous[1] = pendulum.angle[1];
 		
     }
     else if (numerical_integrator === "runge-kutta") {

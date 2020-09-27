@@ -85,9 +85,9 @@ function init() {
     dt = 0.05;  // default
  
     // initialize method of numerical integration of dynamics
-    numerical_integrator = "none";
-    //numerical_integrator = "euler";
-    //numerical_integrator = "verlet";
+    //numerical_integrator = "none";
+    numerical_integrator = "euler";
+    //numerical_integrator = "velocity verlet";
     //numerical_integrator = "velocity verlet";
     //numerical_integrator = "runge-kutta";
 
@@ -180,7 +180,7 @@ function animate() {
 
         // STENCIL: a correct integrator is REQUIRED here for this assignment
 
-        numerical_integrator = "velocity verlet";
+        //numerical_integrator = "velocity verlet";
 
 
 

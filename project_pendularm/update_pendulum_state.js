@@ -25,9 +25,9 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     else if (numerical_integrator === "velocity verlet") {
 
     // STENCIL: a correct velocity Verlet integrator is REQUIRED for assignment
+		pendulum.angle_previous = pendulum.angle;
 		pendulum.angle += pendulum.angle_dot*dt + pendulum.angle_dot_dot*dt*dt/2;
 		pendulum.angle_dot += (pendulum.angle_dot_dot + pendulum_acceleration(pendulum,gravity))/2*dt
-		pendulum.angle_previous = pendulum.angle;
 		
     }
     else if (numerical_integrator === "runge-kutta") {
@@ -94,7 +94,9 @@ function init_verlet_integrator(pendulum, t, gravity) {
 
 function set_PID_parameters(pendulum) {
     // STENCIL: change pid parameters
-    pendulum.servo = {kp:0, kd:0, ki:0};  // no control
+    //pendulum.servo = {kp:200, kd:75, ki:1};
+    pendulum.servo = {kp:500, kd:250, ki:5};
+    
     return pendulum;
 }
 
@@ -107,7 +109,7 @@ function PID(pendulum, accumulated_error, dt) {
 	
 	P = pendulum.servo.kp*error;
 	I = pendulum.servo.ki*accumulated_error;
-	D = pendulum.servo.kd*(error-error_previous);
+	D = pendulum.servo.kd*(error-error_previous)/dt;
 	
 	pendulum.control = P + I + D;
 	
