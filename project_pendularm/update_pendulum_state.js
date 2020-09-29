@@ -54,10 +54,10 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
 		v4 = v1 + a3*dt;
 		a4 = -g/l*Math.sin(x4) + tau/(m*l*l);
 		
+		pendulum.angle_previous = pendulum.angle;
 		pendulum.angle += (v1 + 2*v2 + 2*v3 + v4)/6 * dt;
 		pendulum.angle_dot += (a1 + 2*a2 + 2*a3 + a4)/6 *dt;
-		pendulum.angle_previous = pendulum.angle;
-		
+				
     } 
     else {
         pendulum.angle_previous = pendulum.angle;
