@@ -69,7 +69,9 @@ function init() {
 
     // initialize pendulum controls
     pendulum.control = [0,0];
-    pendulum.desired = [-Math.PI/2.5,-Math.PI/2.5];
+    pendulum.desired = [-Math.PI/2.5,Math.PI/2.5];
+	//pendulum.desired = [-Math.PI,Math.PI/2];
+
 
     // initialize integral term accumulated error to zero
     accumulated_error = [0,0];
