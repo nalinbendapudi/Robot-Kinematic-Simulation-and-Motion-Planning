@@ -8,6 +8,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     if (numerical_integrator === "euler") {
 
     // STENCIL: a correct Euler integrator is REQUIRED for assignment
+	// Please check RK-4 integrator.That works best
 		pendulum.angle_previous[0] = pendulum.angle[0];
 		pendulum.angle[0] += pendulum.angle_dot[0]*dt;
 		pendulum.angle_dot[0] += pendulum.angle_dot_dot[0] * dt;
@@ -20,6 +21,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     else if (numerical_integrator === "verlet") {
 
     // STENCIL: basic Verlet integration
+	// Please check RK-4 integrator.That works best
 		var temp0 = pendulum.angle[0];
 		pendulum.angle[0] = 2*pendulum.angle[0] - pendulum.angle_previous[0] + pendulum.angle_dot_dot[0]*dt*dt
 		pendulum.angle_dot[0] = (pendulum.angle[0] - pendulum.angle_previous[0]) / (2*dt)
@@ -34,6 +36,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     else if (numerical_integrator === "velocity verlet") {
 
     // STENCIL: a correct velocity Verlet integrator is REQUIRED for assignment
+	// Please check RK-4 integrator.That works best
 		
 		pendulum.angle_previous[0] = pendulum.angle[0];
 		pendulum.angle_previous[1] = pendulum.angle[1];
@@ -50,6 +53,7 @@ function update_pendulum_state(numerical_integrator, pendulum, dt, gravity) {
     else if (numerical_integrator === "runge-kutta") {
 
     // STENCIL: Runge-Kutta 4 integrator
+	// Please consider this integrator as part of ROB511 HW Submission
 		
 		var x11 = pendulum.angle[0];
 		var x12 = pendulum.angle[1];

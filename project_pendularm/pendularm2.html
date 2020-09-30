@@ -85,11 +85,11 @@ function init() {
     dt = 0.05;  // default
  
     // initialize method of numerical integration of dynamics
-    numerical_integrator = "none";
+    //numerical_integrator = "none";
     //numerical_integrator = "euler";
     //numerical_integrator = "verlet";
     //numerical_integrator = "velocity verlet";
-    //numerical_integrator = "runge-kutta";
+    numerical_integrator = "runge-kutta";
 
     // OPTIONAL servo controller additional features
     steady_state_error_reset = false; // integral term resets after desired met
@@ -186,9 +186,9 @@ function animate() {
     if (typeof numerical_integrator === "undefined")
         numerical_integrator = "none";
 
-        // STENCIL: a correct integrator is REQUIRED here for this assignment
+    // STENCIL: a correct integrator is REQUIRED here for this assignment
+	//numerical_integrator = "runge-kutta";	// this is indicated in init
 
-        
 
 
     // set the angles of the pendulum
