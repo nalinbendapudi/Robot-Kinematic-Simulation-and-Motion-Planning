@@ -1,4 +1,4 @@
-//CI grader generates report at 03-10-2020-00-07-54
+//CI grader generates report at 05-10-2020-00-08-36
 grade = 
 {
   "bnalin": {
@@ -153,7 +153,7 @@ grade =
         ]
       }, 
       "Pendularm_Euler": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -165,11 +165,11 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 4/4, due day check pass, good work!"
         ]
       }, 
       "Pendularm_VelocityVerlet": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -181,11 +181,11 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 4/4, due day check pass, good work!"
         ]
       }, 
       "Pendularm_PID": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -193,11 +193,11 @@ grade =
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "Point: 4/4, due day check pass, good work!"
         ]
       }, 
       "Pendularm_Verlet": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -209,11 +209,11 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 1/1, due day check pass, good work!"
         ]
       }, 
       "Pendularm_RK4": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -225,25 +225,65 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 2/2, due day check pass, good work!"
         ]
       }, 
       "Pendularm_Double": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 3/3, due day check pass, good work!"
         ]
       }, 
       "FK_MatrixRoutines": {
         "status": "PENDING", 
+        "test results": {
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "matrix_multiply undefined\nmatrix_transpose undefined\nvector_normalize undefined\nvector_cross undefined\ngenerate_identity undefined\ngenerate_translation_matrix undefined\ngenerate_rotation_matrix_X undefined\ngenerate_rotation_matrix_Y undefined\ngenerate_rotation_matrix_Z undefined\nAt least one function undefined\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FK_Transforms": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_2.js:753\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_2.js:753:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_2.js:1073:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (inter"
+          }, 
+          "Test 3": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_3.js:532\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_3.js:532:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_3.js:852:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_0.js:618\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_0.js:618:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_0.js:938:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_1.js:501\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_1.js:501:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_1.js:821:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 6": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_6.js:1130\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_6.js:1130:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_6.js:1450:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }, 
+          "Test 7": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_7.js:1094\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_7.js:1094:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_7.js:1414:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }, 
+          "Test 4": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_4.js:526\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_4.js:526:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_4.js:846:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 5": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_5.js:1014\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_5.js:1014:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_5.js:1334:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -254,8 +294,42 @@ grade =
       }, 
       "FK_BaseOffset": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_2.js:753\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_2.js:753:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_2.js:1073:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (inter"
+          }, 
+          "Test 3": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_3.js:532\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_3.js:532:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_3.js:852:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_0.js:618\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_0.js:618:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_0.js:938:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_1.js:501\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_1.js:501:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_1.js:821:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 6": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_6.js:1130\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_6.js:1130:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_6.js:1450:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }, 
+          "Test 7": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_7.js:1094\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_7.js:1094:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_7.js:1414:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }, 
+          "Test 4": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_4.js:526\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_4.js:526:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_4.js:846:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+          }, 
+          "Test 5": {
+            "Status": "Failed", 
+            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_5.js:1014\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_5.js:1014:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_5.js:1334:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 8 test cases passed"
         ]
       }, 
       "FK_NewRobot": {
@@ -378,7 +452,7 @@ grade =
         "status": 4.0
       }, 
       {
-        "status": "PENDING"
+        "status": 4.0
       }, 
       {
         "status": "PENDING"
@@ -389,6 +463,10 @@ grade =
       {
         "status": "PENDING"
       }
-    ]
+    ], 
+    "participation": {
+      "status": 0.5, 
+      "comments": "Pod submitted name and logo"
+    }
   }
 }
