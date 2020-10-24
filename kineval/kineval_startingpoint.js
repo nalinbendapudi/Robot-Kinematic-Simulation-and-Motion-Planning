@@ -418,7 +418,7 @@ kineval.startingPlaceholderUserInput = function startingPlaceholderUserInput() {
     }
     else {
         // STENCIL: say something more interesting in the textbar element
-        textbar.innerHTML = "Welcome to KinEval. I want to see some text. Can you place a message here?"; 
+        textbar.innerHTML = "Whether we are based on carbon or on silicon makes no fundamental difference; we should each be treated with appropriate respect. ― Arthur C. Clarke"; 
     }
 }
 
