@@ -1,4 +1,4 @@
-//CI grader generates report at 24-10-2020-12-06-53
+//CI grader generates report at 24-10-2020-18-07-21
 grade = 
 {
   "bnalin": {
@@ -251,35 +251,35 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_2.js:753\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_2.js:753:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_2.js:1073:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (inter"
+            "Stderr": "Robot crawler joints transformation undefined\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_3.js:532\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_3.js:532:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_3.js:852:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_0.js:618\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_0.js:618:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_0.js:938:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot mr2 joints transformation undefined\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_1.js:501\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_1.js:501:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_1.js:821:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot urdf_example joints transformation undefined\n"
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_6.js:1130\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_6.js:1130:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_6.js:1450:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot fetch joints transformation undefined\n"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_7.js:1094\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_7.js:1094:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_7.js:1414:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot baxter joints transformation undefined\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_4.js:526\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_4.js:526:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_4.js:846:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot y joints transformation undefined\n"
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_Transforms/test_5.js:1014\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_Transforms/test_5.js:1014:13)\n    at Object.<anonymous> (/bnalin/FK_Transforms/test_5.js:1334:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
@@ -297,35 +297,35 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_2.js:753\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_2.js:753:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_2.js:1073:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (inter"
+            "Stderr": "Robot crawler joints transformation undefined\n"
           }, 
           "Test 3": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_3.js:532\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_3.js:532:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_3.js:852:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot br2 joints transformation undefined\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_0.js:618\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_0.js:618:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_0.js:938:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot mr2 joints transformation undefined\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_1.js:501\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_1.js:501:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_1.js:821:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot urdf_example joints transformation undefined\n"
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_6.js:1130\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_6.js:1130:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_6.js:1450:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot fetch joints transformation undefined\n"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_7.js:1094\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_7.js:1094:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_7.js:1414:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot baxter joints transformation undefined\n"
           }, 
           "Test 4": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_4.js:526\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_4.js:526:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_4.js:846:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (intern"
+            "Stderr": "Robot y joints transformation undefined\n"
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FK_BaseOffset/test_5.js:1014\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FK_BaseOffset/test_5.js:1014:13)\n    at Object.<anonymous> (/bnalin/FK_BaseOffset/test_5.js:1334:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Object.Module._extensions..js (int"
+            "Stderr": "Robot sawyer joints transformation undefined\n"
           }
         }, 
         "comments": [
@@ -361,7 +361,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FSMDance_SetpointControl/test_0.js:147\n    kineval.initRobotJoints();\n            ^\n\nTypeError: kineval.initRobotJoints is not a function\n    at Object.initRobot (/bnalin/FSMDance_SetpointControl/test_0.js:147:13)\n    at Object.<anonymous> (/bnalin/FSMDance_SetpointControl/test_0.js:290:9)\n    at Module._compile (internal/modules/cjs/loader.js:1137:30)\n    at Obje"
+            "Stderr": "[ERROR]: Setpoint control test failed\n"
           }
         }, 
         "comments": [
