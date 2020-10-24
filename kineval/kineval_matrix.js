@@ -18,165 +18,76 @@ function matrix_copy(m1) {
 }
 
 
-    // STENCIL: reference matrix code has the following functions:
-    //   matrix_multiply
-    //   matrix_transpose
-    //   matrix_pseudoinverse
-    //   matrix_invert_affine
-    //   vector_normalize
-    //   vector_cross
-    //   generate_identity
-    //   generate_translation_matrix
-    //   generate_rotation_matrix_X
-    //   generate_rotation_matrix_Y
-    //   generate_rotation_matrix_Z
-	
-function matrix_multiply (m1,m2) {
-	var mat = [];
-	var i,j;
-	for (i=0; i<m1.length; i++){
-		mat[i] = [];
-		for(j=0; j<m2[0].length; j++){
-			mat[i][j] = 0;
-			for(k=0; k<m1[i].length; k++){
-				mat[i][j] += m1[i][k]*m2[k][j];
-			}
-		}
-	}
-	return mat;
-}
+// STENCIL: reference matrix code has the following functions:
+//   matrix_multiply
+//   matrix_transpose
+//   matrix_pseudoinverse
+//   matrix_invert_affine
+//   vector_normalize
+//   vector_cross
+//   generate_identity
+//   generate_translation_matrix
+//   generate_rotation_matrix_X
+//   generate_rotation_matrix_Y
+//   generate_rotation_matrix_Z
 
-function matrix_transpose (m1){
-	var mat = [];
-    var i,j;
 
-    for (i=0;i<m1.length;i++) {
-        mat[i] = [];
-        for (j=0;j<m1[0].length;j++) {
-            mat[i][j] = m1[j][i];
-        }
-    }
-    return mat;
-}
 
-function vector_normalize (v1){
-	var vec = []
-	var i;
-	var norm=0;
-	
-	for (i=0; i<v1.length; i++){
-		norm += v1[i]*v1[i];
-	}
-	norm = Math.sqrt(norm);
-	for (i=0; i<v1.length; i++){
-		vec[i] = v1[i]/norm;
-	}
-	return vec;
-}
+// **** Function stencils are provided below, please uncomment and implement them ****//
 
-function vector_cross (v1, v2){
-	var vec = []
-	vec[0] = v1[1]*v2[2] - v1[2]*v2[1];
-	vec[1] = v1[2]*v2[0] - v1[0]*v2[2];
-	vec[2] = v1[0]*v2[1] - v1[1]*v2[0];
-	return vec;
-}
 
-function generate_identity (n){
-	var mat = [];
-    var i,j;
 
-    for (i=0;i<n;i++) {
-        mat[i] = [];
-        for (j=0;j<n;j++) {
-            if(i==j)
-				mat[i][j] = 1;
-			else
-				mat[i][j] = 0;
-        }
-    }
-    return mat;
-}
+// function matrix_multiply(m1,m2) {
+//     // returns 2D array that is the result of m1*m2
 
-function generate_translation_matrix (x,y,z){
-	var mat = [];
-    var i,j;
+// }
 
-    for (i=0;i<4;i++) {
-        mat[i] = [];
-        for (j=0;j<4;j++) {
-            if(i==j)
-				mat[i][j] = 1;
-			else
-				mat[i][j] = 0;
-        }
-    }
-	mat[0][3] = x;
-	mat[1][3] = y;
-	mat[2][3] = z;
-	
-	return mat;
-}
+// function matrix_transpose(m) {
+//     // returns 2D array that is the result of m1*m2
 
-function generate_rotation_matrix_X (theta){
-	var mat = [];
-    var i,j;
+// }
 
-    for (i=0;i<4;i++) {
-        mat[i] = [];
-        for (j=0;j<4;j++) {
-            if(i==j)
-				mat[i][j] = 1;
-			else
-				mat[i][j] = 0;
-        }
-    }
-	mat[1][1] = Math.cos(theta);
-	mat[1][2] = -Math.sin(theta);
-	mat[2][1] = Math.sin(theta);
-	mat[2][2] = Math.cos(theta);
-	
-	return mat;
-}
+// function matrix_pseudoinverse(m) {
+//     // returns pseudoinverse of matrix m
 
-function generate_rotation_matrix_Y (theta){
-	var mat = [];
-    var i,j;
+// }
 
-    for (i=0;i<4;i++) {
-        mat[i] = [];
-        for (j=0;j<4;j++) {
-            if(i==j)
-				mat[i][j] = 1;
-			else
-				mat[i][j] = 0;
-        }
-    }
-	mat[0][0] = Math.cos(theta);
-	mat[0][2] = Math.sin(theta);
-	mat[2][0] = -Math.sin(theta);
-	mat[2][2] = Math.cos(theta);
-	
-	return mat;
-}
+// function matrix_invert_affine(m) {
+//     // returns 2D array that is the invert affine of 4-by-4 matrix m
 
-function generate_rotation_matrix_Z (theta){
-	var mat = [];
-    var i,j;
+// }
 
-    for (i=0;i<4;i++) {
-        mat[i] = [];
-        for (j=0;j<4;j++) {
-            if(i==j)
-				mat[i][j] = 1;
-			else
-				mat[i][j] = 0;
-        }
-    }
-	mat[0][0] = Math.cos(theta);
-	mat[0][1] = -Math.sin(theta);
-	mat[1][0] = Math.sin(theta);
-	mat[1][1] = Math.cos(theta);
-	
-	return mat;
-}
+// function vector_normalize(v) {
+//     // returns normalized vector for v
+    
+// }
+
+// function vector_cross(a,b) {
+//     // return cross product of vector a and b with both has 3 dimensions
+    
+// }
+
+// function generate_identity() {
+//     // returns 4-by-4 2D array of identity matrix
+    
+// }
+
+// function generate_translation_matrix(tx, ty, tz) {
+//     // returns 4-by-4 matrix as a 2D array
+    
+// }
+
+// function generate_rotation_matrix_X(angle) {
+//     // returns 4-by-4 matrix as a 2D array, angle is in radians
+    
+// }
+
+// function generate_rotation_matrix_Y(angle) {
+//     // returns 4-by-4 matrix as a 2D array, angle is in radians
+    
+// }
+
+// function generate_rotation_matrix_Z(angle) {
+//     // returns 4-by-4 matrix as a 2D array, angle is in radians
+    
+// }
