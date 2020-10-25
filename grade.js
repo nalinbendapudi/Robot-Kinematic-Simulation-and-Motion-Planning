@@ -1,4 +1,4 @@
-//CI grader generates report at 25-10-2020-06-06-58
+//CI grader generates report at 25-10-2020-16-07-11
 grade = 
 {
   "bnalin": {
@@ -235,55 +235,55 @@ grade =
         ]
       }, 
       "FK_MatrixRoutines": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "matrix_multiply undefined\nmatrix_transpose undefined\nvector_normalize undefined\nvector_cross undefined\ngenerate_identity undefined\ngenerate_translation_matrix undefined\ngenerate_rotation_matrix_X undefined\ngenerate_rotation_matrix_Y undefined\ngenerate_rotation_matrix_Z undefined\nAt least one function undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FK_Transforms": {
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Robot crawler joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Robot mr2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Robot urdf_example joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation undefined\n"
+            "Stderr": "Robot fetch joints transformation incorrect\n"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation undefined\n"
+            "Stderr": "Robot baxter joints transformation incorrect\n"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "Robot y joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation incorrect\n"
           }
         }, 
         "comments": [
-          "0 out of 8 test cases passed"
+          "5 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -296,40 +296,40 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Robot crawler joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "Robot br2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Robot mr2 joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "Robot urdf_example joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 6": {
             "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation undefined\n"
+            "Stderr": "Robot fetch joints transformation incorrect\n"
           }, 
           "Test 7": {
             "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation undefined\n"
+            "Stderr": "Robot baxter joints transformation incorrect\n"
           }, 
           "Test 4": {
-            "Status": "Failed", 
-            "Stderr": "Robot y joints transformation undefined\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 5": {
             "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation undefined\n"
+            "Stderr": "Robot sawyer joints transformation incorrect\n"
           }
         }, 
         "comments": [
-          "0 out of 8 test cases passed"
+          "5 out of 8 test cases passed"
         ]
       }, 
       "FK_NewRobot": {
