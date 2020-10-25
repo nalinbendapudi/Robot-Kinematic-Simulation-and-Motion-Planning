@@ -37,16 +37,6 @@ function matrix_copy(m1) {
 
 
 
-// function matrix_multiply(m1,m2) {
-//     // returns 2D array that is the result of m1*m2
-
-// }
-
-// function matrix_transpose(m) {
-//     // returns 2D array that is the result of m1*m2
-
-// }
-
 // function matrix_pseudoinverse(m) {
 //     // returns pseudoinverse of matrix m
 
@@ -57,40 +47,7 @@ function matrix_copy(m1) {
 
 // }
 
-// function vector_normalize(v) {
-//     // returns normalized vector for v
-    
-// }
 
-// function vector_cross(a,b) {
-//     // return cross product of vector a and b with both has 3 dimensions
-    
-// }
-
-// function generate_identity() {
-//     // returns 4-by-4 2D array of identity matrix
-    
-// }
-
-// function generate_translation_matrix(tx, ty, tz) {
-//     // returns 4-by-4 matrix as a 2D array
-    
-// }
-
-// function generate_rotation_matrix_X(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
-
-// function generate_rotation_matrix_Y(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
-
-// function generate_rotation_matrix_Z(angle) {
-//     // returns 4-by-4 matrix as a 2D array, angle is in radians
-    
-// }
 
 	
 function matrix_multiply (m1,m2) {
@@ -112,9 +69,9 @@ function matrix_transpose (m1){
 	var mat = [];
     var i,j;
 
-    for (i=0;i<m1.length;i++) {
+    for (i=0;i<m1[0].length;i++) {
         mat[i] = [];
-        for (j=0;j<m1[0].length;j++) {
+        for (j=0;j<m1.length;j++) {
             mat[i][j] = m1[j][i];
         }
     }
@@ -142,6 +99,22 @@ function vector_cross (v1, v2){
 	vec[1] = v1[2]*v2[0] - v1[0]*v2[2];
 	vec[2] = v1[0]*v2[1] - v1[1]*v2[0];
 	return vec;
+}
+
+function vector_dot (v1, v2){
+	var dot_product;
+	for(var i=0; i<v1.length; i++){
+		dot_product+= (v1[i]*v2[i]);
+	}
+	return dot_product;
+}
+
+function vector_scalar_product (v, s){
+	var scaled = [];
+	for(var i=0; i<v.length; i++){
+		scaled[i]+= (v[i]*s);
+	}
+	return scaled;
 }
 
 function generate_identity (){
