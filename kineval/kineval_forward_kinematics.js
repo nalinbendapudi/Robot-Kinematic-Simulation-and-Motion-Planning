@@ -24,7 +24,14 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
     }
 
     // STENCIL: implement kineval.buildFKTransforms();
+	kineval.buildFKTransforms();
+}
 
+kineval.buildFKTransforms = function buildFKTransforms() {
+	var I = generate_identity();
+	mStack = [I];
+	traverseFKBase();
+	traverseFKLink(robot.base);
 }
 
     // STENCIL: reference code alternates recursive traversal over 
@@ -41,3 +48,68 @@ kineval.robotForwardKinematics = function robotForwardKinematics () {
     //   coordinate conversion is needed for kineval/threejs coordinates:
     //
 
+function traverseFKBase()  {
+	
+	mStack.push(stackTop(mStack));
+	
+	var xyz = robot.origin.xyz;
+	var rpy = robot.origin.rpy;
+	
+	var T = generate_translation_matrix(xyz[0], xyz[1], xyz[2]);
+	var Rz = generate_rotation_matrix_Z(rpy[2]);
+	var Ry = generate_rotation_matrix_Y(rpy[1]);
+	var Rx = generate_rotation_matrix_X(rpy[0]);
+	var R = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
+	
+	mStack[mStack.length-1] = matrix_multiply(stackTop(mStack), matrix_multiply(T,R));
+	if (robot.links_geom_imported) {
+		mStack[mStack.length-1] = matrix_multiply(generate_rotation_matrix_Z(-Math.PI/2), matrix_multiply(generate_rotation_matrix_Y(-Math.PI/2),stackTop(mStack)));
+	}
+	robot.links[robot.base].xform = stackTop(mStack);
+	
+	
+	var headingVector = [[0],[0],[1],[1]];
+	robot_heading = matrix_multiply(robot.links[robot.base].xform, headingVector);
+	var lateralVector = [[1],[0],[0],[1]];
+	robot_lateral = matrix_multiply(robot.links[robot.base].xform, lateralVector);
+}
+
+function traverseFKLink(linkName) {
+	
+	robot.links[linkName].xform = stackTop(mStack);
+	
+	if( typeof robot.links[linkName].children != "undefined") {
+		for (var j=0; j< robot.links[linkName].children.length; j++){
+			traverseFKJoint(robot.links[linkName].children[j]);
+		}
+	}
+	
+	mStack.pop();
+	
+}
+
+function traverseFKJoint(jointName) {
+	
+	mStack.push(stackTop(mStack));
+	
+	var xyz = robot.joints[jointName].origin.xyz;
+	var rpy = robot.joints[jointName].origin.rpy;
+	
+	var T = generate_translation_matrix(xyz[0], xyz[1], xyz[2]);
+	var Rz = generate_rotation_matrix_Z(rpy[2]);
+	var Ry = generate_rotation_matrix_Y(rpy[1]);
+	var Rx = generate_rotation_matrix_X(rpy[0]);
+	var R = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
+	
+	mStack[mStack.length-1] = matrix_multiply(stackTop(mStack), matrix_multiply(T,R));
+	// if (robot.links_geom_imported) {
+		// mStack[mStack.length-1] = matrix_multiply(generate_rotation_matrix_Z(Math.PI/2), matrix_multiply(generate_rotation_matrix_Y(Math.PI/2),stackTop(mStack)));
+	// }
+	robot.joints[jointName].xform = stackTop(mStack);
+	
+	traverseFKLink(robot.joints[jointName].child);
+}
+
+function stackTop(list){
+	return list[list.length-1];
+}
