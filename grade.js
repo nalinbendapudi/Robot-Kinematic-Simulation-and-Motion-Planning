@@ -1,4 +1,4 @@
-//CI grader generates report at 25-10-2020-16-07-11
+//CI grader generates report at 25-10-2020-18-07-31
 grade = 
 {
   "bnalin": {
@@ -343,7 +343,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "quaternionFromAxisAngle undefined\nquaternionNormalize undefined\nquaternionMultiply undefined\nquaternionToRotationMatrix undefined\nAt least one function undefined\n"
+            "Stderr": "Error message too long, print partially: /bnalin/FSMDance_Quaternion/test_0.js:112\n    var q_axis =  vector_cross(q1_axis, q2_axis) + vector_scalar_product(q1_axis, q2.a) + vector_scalar_product(q2_axis, q1.a);\n                  ^\n\nReferenceError: vector_cross is not defined\n    at Object.quaternion_multiply [as quaternionMultiply] (/bnalin/FSMDance_Quaternion/test_0.js:112:19)\n    at test_main (/bnalin/FSMDance"
           }
         }, 
         "comments": [
