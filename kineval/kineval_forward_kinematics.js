@@ -101,10 +101,25 @@ function traverseFKJoint(jointName) {
 	var Rx = generate_rotation_matrix_X(rpy[0]);
 	var R = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
 	
-	mStack[mStack.length-1] = matrix_multiply(stackTop(mStack), matrix_multiply(T,R));
-	// if (robot.links_geom_imported) {
-		// mStack[mStack.length-1] = matrix_multiply(generate_rotation_matrix_Z(Math.PI/2), matrix_multiply(generate_rotation_matrix_Y(Math.PI/2),stackTop(mStack)));
-	// }
+	var joint_movement;
+
+    if (typeof robot.joints[jointName].type == "undefined" || robot.joints[jointName].type == "revolute" || robot.joints[jointName].type == "continuous") {
+        var axis = robot.joints[jointName].axis;
+        var angle = robot.joints[jointName].angle;
+        var quat = kineval.quaternionFromAxisAngle(axis, angle);
+        quat = kineval.quaternionNormalize(quat);
+        joint_movement = kineval.quaternionToRotationMatrix(quat);
+
+    } else if (robot.joints[jointName].type == "prismatic") {
+        var axis = robot.joints[jointName].axis;
+        var angle = robot.joints[jointName].angle;
+        var trans = vector_scalar_product(axis, angle);
+        joint_movement = generate_translation_matrix(trans[0], trans[1], trans[2]);
+    } else {
+        joint_movement = generate_identity();
+    }
+
+    mStack[mStack.length - 1] = matrix_multiply(stackTop(mStack), matrix_multiply(T, matrix_multiply(R, joint_movement)));
 	robot.joints[jointName].xform = stackTop(mStack);
 	
 	traverseFKLink(robot.joints[jointName].child);

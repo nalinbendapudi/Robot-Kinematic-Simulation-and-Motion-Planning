@@ -112,7 +112,7 @@ function vector_dot (v1, v2){
 function vector_scalar_product (v, s){
 	var scaled = [];
 	for(var i=0; i<v.length; i++){
-		scaled[i]+= (v[i]*s);
+		scaled[i] = (v[i]*s);
 	}
 	return scaled;
 }
