@@ -48,7 +48,6 @@ kineval.quaternionMultiply = function quaternion_multiply(q1,q2) {
 
     return q;
 
-
 }
 
 kineval.quaternionToRotationMatrix = function quaternion_to_rotation_matrix (q) {

@@ -62,16 +62,17 @@ function traverseFKBase()  {
 	var R = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
 	
 	mStack[mStack.length-1] = matrix_multiply(stackTop(mStack), matrix_multiply(T,R));
-	if (robot.links_geom_imported) {
-		mStack[mStack.length-1] = matrix_multiply(generate_rotation_matrix_Z(-Math.PI/2), matrix_multiply(generate_rotation_matrix_Y(-Math.PI/2),stackTop(mStack)));
-	}
 	robot.links[robot.base].xform = stackTop(mStack);
 	
-	
 	var headingVector = [[0],[0],[1],[1]];
-	robot_heading = matrix_multiply(robot.links[robot.base].xform, headingVector);
+	robot_heading = matrix_multiply(stackTop(mStack), headingVector);
 	var lateralVector = [[1],[0],[0],[1]];
-	robot_lateral = matrix_multiply(robot.links[robot.base].xform, lateralVector);
+	robot_lateral = matrix_multiply(stackTop(mStack), lateralVector);
+	
+	if (robot.links_geom_imported) {
+		mStack[mStack.length-1] = matrix_multiply(stackTop(mStack), matrix_multiply(generate_rotation_matrix_Y(-Math.PI/2),generate_rotation_matrix_X(-Math.PI/2)));
+	}
+	robot.links[robot.base].xform = stackTop(mStack);
 }
 
 function traverseFKLink(linkName) {
