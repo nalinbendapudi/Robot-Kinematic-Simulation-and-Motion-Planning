@@ -1,4 +1,4 @@
-//CI grader generates report at 26-10-2020-18-07-50
+//CI grader generates report at 27-10-2020-00-11-47
 grade = 
 {
   "bnalin": {
@@ -247,7 +247,7 @@ grade =
         ]
       }, 
       "FK_Transforms": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -266,24 +266,24 @@ grade =
             "Stderr": ""
           }, 
           "Test 6": {
-            "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 7": {
-            "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 4": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 5": {
-            "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "5 out of 8 test cases passed"
+          "8 out of 8 test cases passed"
         ]
       }, 
       "FK_JointRendering": {
@@ -293,7 +293,7 @@ grade =
         ]
       }, 
       "FK_BaseOffset": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
@@ -312,24 +312,24 @@ grade =
             "Stderr": ""
           }, 
           "Test 6": {
-            "Status": "Failed", 
-            "Stderr": "Robot fetch joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 7": {
-            "Status": "Failed", 
-            "Stderr": "Robot baxter joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 4": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 5": {
-            "Status": "Failed", 
-            "Stderr": "Robot sawyer joints transformation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "5 out of 8 test cases passed"
+          "8 out of 8 test cases passed"
         ]
       }, 
       "FK_NewRobot": {
@@ -343,7 +343,7 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: /bnalin/FSMDance_Quaternion/test_0.js:112\n    var q_axis =  vector_cross(q1_axis, q2_axis) + vector_scalar_product(q1_axis, q2.a) + vector_scalar_product(q2_axis, q1.a);\n                  ^\n\nReferenceError: vector_cross is not defined\n    at Object.quaternion_multiply [as quaternionMultiply] (/bnalin/FSMDance_Quaternion/test_0.js:112:19)\n    at test_main (/bnalin/FSMDance"
+            "Stderr": "quaternionFromAxisAngle test pass\nquaternionNormalize test pass\nquaternionMultiply test fail\nquaternionToRotationMatrix test pass\n[ERROR]: Test fail\n"
           }
         }, 
         "comments": [
