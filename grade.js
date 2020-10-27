@@ -1,4 +1,4 @@
-//CI grader generates report at 27-10-2020-00-11-47
+//CI grader generates report at 27-10-2020-06-07-52
 grade = 
 {
   "bnalin": {
@@ -357,15 +357,15 @@ grade =
         ]
       }, 
       "FSMDance_SetpointControl": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Setpoint control test failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_FSM": {
@@ -375,27 +375,27 @@ grade =
         ]
       }, 
       "FSMDance_JointLimits": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control value for gripper_axis is a nan\nkineval: control value for bellows_joint2 is a nan\nkineval: control value for estop_joint is a nan\nkineval: control value for laser_joint is a nan\nkineval: control value for torso_fixed_j"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Prismatic": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "Error message too long, print partially: kineval: control value for r_wheel_joint is a nan\nkineval: control value for l_wheel_joint is a nan\nkineval: control value for shoulder_pan_joint is a nan\nkineval: control value for shoulder_lift_joint is a nan\nkineval: control value for upperarm_roll_joint is a nan\nkineval: control value for elbow_flex_joint is a nan\nkineval: control value for forearm_roll_joint is a nan\nkineval: control value for wrist_flex_joint is a nan\nkineval: control value for wrist_roll_joint is a nan\nkineval: control va"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 1 test cases passed"
+          "1 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_Rosbridge": {
