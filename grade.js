@@ -1,4 +1,4 @@
-//CI grader generates report at 28-10-2020-18-07-22
+//CI grader generates report at 29-10-2020-00-10-42
 grade = 
 {
   "bnalin": {
@@ -339,15 +339,15 @@ grade =
         ]
       }, 
       "FSMDance_Quaternion": {
-        "status": "PASS", 
+        "status": "PENDING", 
         "test results": {
           "Test 0": {
-            "Status": "Succeed", 
-            "Stderr": ""
+            "Status": "Failed", 
+            "Stderr": "quaternionFromAxisAngle test pass\nquaternionNormalize test pass\nquaternionMultiply test fail\nquaternionToRotationMatrix test pass\n[ERROR]: Test fail\n"
           }
         }, 
         "comments": [
-          "1 out of 1 test cases passed"
+          "0 out of 1 test cases passed"
         ]
       }, 
       "FSMDance_BaseControl": {
