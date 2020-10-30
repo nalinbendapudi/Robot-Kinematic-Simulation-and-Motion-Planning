@@ -35,7 +35,9 @@ kineval.quaternionNormalize = function quaternion_normalize(q1) {
 
 kineval.quaternionMultiply = function quaternion_multiply(q1,q2) {
     // returns quaternion q as dic, with q.a as real number, q.b as i component, q.c as j component, q.d as k component
-    var q = {};
+    
+	
+	var q = {};
     
 	var q1_axis = [q1.b, q1.c, q1.d];
     var q2_axis = [q2.b, q2.c, q2.d];
@@ -76,7 +78,7 @@ function vector_cross_ (v1, v2){
 }
 
 function vector_dot_ (v1, v2){
-	var dot_product;
+	var dot_product=0;
 	for(var i=0; i<v1.length; i++){
 		dot_product+= (v1[i]*v2[i]);
 	}

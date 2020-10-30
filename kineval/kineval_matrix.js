@@ -102,7 +102,7 @@ function vector_cross (v1, v2){
 }
 
 function vector_dot (v1, v2){
-	var dot_product;
+	var dot_product=0;
 	for(var i=0; i<v1.length; i++){
 		dot_product+= (v1[i]*v2[i]);
 	}
