@@ -1,7 +1,7 @@
 /*
      Cassie robot URDF kinematic description in JavaScript
      
-     @author M. Eva Mungai 
+     @author Nalin Bendapudi
 
      based on https://github.com/UMich-BipedLab/Cassie_Model/blob/master/urdf/cassie.urdf
 
