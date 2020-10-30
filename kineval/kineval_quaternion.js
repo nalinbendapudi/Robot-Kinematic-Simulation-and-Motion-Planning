@@ -36,19 +36,27 @@ kineval.quaternionNormalize = function quaternion_normalize(q1) {
 kineval.quaternionMultiply = function quaternion_multiply(q1,q2) {
     // returns quaternion q as dic, with q.a as real number, q.b as i component, q.c as j component, q.d as k component
     
-	
 	var q = {};
-    
-	var q1_axis = [q1.b, q1.c, q1.d];
-    var q2_axis = [q2.b, q2.c, q2.d];
-    var q_axis =  vector_cross_(q1_axis, q2_axis) + vector_scalar_product_(q1_axis, q2.a) + vector_scalar_product_(q2_axis, q1.a);
-    
-	q.a = q1.a*q2.a - vector_dot_(q1_axis, q2_axis);
-    q.b = q_axis[0];
-    q.c = q_axis[1];
-    q.d = q_axis[2];
+	
+	q.a = (q2.a*q1.a) - (q2.b*q1.b) - (q2.c*q1.c) - (q2.d*q1.d);
+	q.b = (q2.a*q1.b) + (q2.b*q1.a) - (q2.c*q1.d) + (q2.d*q1.c);
+	q.c = (q2.a*q1.c) + (q2.b*q1.d) + (q2.c*q1.a) - (q2.d*q1.b);
+	q.d = (q2.a*q1.d) - (q2.b*q1.c) + (q2.c*q1.b) + (q2.d*q1.a);
+	
+	return q;
 
-    return q;
+	// var q = {};
+    
+	// var q1_axis = [q1.b, q1.c, q1.d];
+    // var q2_axis = [q2.b, q2.c, q2.d];
+    // var q_axis =  vector_cross_(q1_axis, q2_axis) + vector_scalar_product_(q1_axis, q2.a) + vector_scalar_product_(q2_axis, q1.a);
+    
+	// q.a = q1.a*q2.a - vector_dot_(q1_axis, q2_axis);
+    // q.b = q_axis[0];
+    // q.c = q_axis[1];
+    // q.d = q_axis[2];
+
+    // return q;
 
 }
 
