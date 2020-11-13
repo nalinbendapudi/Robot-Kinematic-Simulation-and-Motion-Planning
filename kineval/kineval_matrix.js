@@ -37,11 +37,6 @@ function matrix_copy(m1) {
 
 
 
-// function matrix_pseudoinverse(m) {
-//     // returns pseudoinverse of matrix m
-
-// }
-
 // function matrix_invert_affine(m) {
 //     // returns 2D array that is the invert affine of 4-by-4 matrix m
 
@@ -51,6 +46,8 @@ function matrix_copy(m1) {
 
 	
 function matrix_multiply (m1,m2) {
+	if(m1[0].length != m2.length)
+		console.log("matrix_multiply: matrices have incompatible sizes");
 	var mat = [];
 	var i,j,k;
 	for (i=0; i<m1.length; i++){
@@ -214,4 +211,73 @@ function generate_rotation_matrix_Z (theta){
 	mat[1][1] = Math.cos(theta);
 	
 	return mat;
+}
+
+function matrix_pseudoinverse(mat) {
+    var n = mat.length;
+	var m = mat[0].length;
+	
+	if(n>=m){
+		var pseudoInv = matrix_multiply(numeric.inv(matrix_multiply(matrix_transpose(mat),mat)),matrix_transpose(mat));
+	}
+	else{
+		var pseudoInv = matrix_multiply(matrix_transpose(mat),numeric.inv(matrix_multiply(mat,matrix_transpose(mat))));
+	}
+	return pseudoInv;
+}
+
+function homogenize (v) {
+	// input is an array of 3 elements
+	// output is a 4X1 matrix 
+	var vec = [ [v[0]], [v[1]], [v[2]], [1] ];
+	return vec;
+}
+
+function vectorize (m) {
+	// input is nX1 matrix
+	// output is array of size n
+	var vec = [];
+	for (var i=0; i<m.length; i++){
+		vec[i] = m[i][0];
+	}
+	return vec;
+}
+
+function matricize (v) {
+	// input is an array of size n
+	// output is an nX1 matrix
+	var mat = [];
+	for (var i=0; i<v.length; i++){
+		mat[i] = [v[i]];
+	}
+	return mat;
+}
+
+function vector_subtract (v1,v2) {
+	if(v1.length != v2.length)
+		console.log("vector_subtract: vectors of different size");
+	var n = v1.length;
+	var vec = [];
+	for (var i=0; i<n; i++){
+		vec[i] = v1[i]-v2[i];
+	}
+	return vec;
+}
+
+function vector_reverse (v){
+	var n = v.length;
+	var vec = [];
+	for (var i=0; i<n; i++){
+		vec[i] = v[n-1-i];
+	}
+	return vec;
+}
+
+function extract_rotation_matrix (m) {
+	var rot = 	[
+				[ m[0][0] , m[0][1] , m[0][2] ],
+				[ m[1][0] , m[1][1] , m[1][2] ],
+				[ m[2][0] , m[2][1] , m[2][2] ]
+				];
+	return rot;
 }
