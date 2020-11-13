@@ -1,4 +1,4 @@
-//CI grader generates report at 07-11-2020-12-08-39
+//CI grader generates report at 12-11-2020-17-53-21
 grade = 
 {
   "bnalin": {
@@ -537,8 +537,8 @@ grade =
       }
     ], 
     "participation": {
-      "status": 0.5, 
-      "comments": "Pod submitted name and logo"
+      "status": 1.0, 
+      "comments": "Pod submitted name and logo\nPod submitted dance off video "
     }
   }
 }
