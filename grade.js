@@ -1,4 +1,4 @@
-//CI grader generates report at 12-11-2020-17-53-21
+//CI grader generates report at 13-11-2020-07-54-22
 grade = 
 {
   "bnalin": {
@@ -409,11 +409,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 0\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.jacobian not defined, please check whether you have assigned value for robot.jacobian\n"
+            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 1\n"
           }
         }, 
         "comments": [
@@ -425,15 +425,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Target not reached\n"
+            "Stderr": "Error increased during iteration, implementation incorrect\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "[ERROR]: IK_JTranspose test 0 failed\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "[ERROR]: IK_JTranspose test 1 failed\n"
           }
         }, 
         "comments": [
@@ -445,15 +445,15 @@ grade =
         "test results": {
           "Test 2": {
             "Status": "Failed", 
-            "Stderr": "Target not reached\n"
+            "Stderr": "Error increased during iteration, implementation incorrect\n"
           }, 
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "[ERROR]: IK_JPseudoInverse test 0 failed\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.dq not defined, please check whether you have assigned value for robot.dq\n"
+            "Stderr": "[ERROR]: IK_JPseudoInverse test 1 failed\n"
           }
         }, 
         "comments": [
@@ -465,11 +465,11 @@ grade =
         "test results": {
           "Test 0": {
             "Status": "Failed", 
-            "Stderr": "robot.dx not defined, please check whether you have assigned value for robot.dx\n"
+            "Stderr": "[ERROR]: IK_EulerAngles test 0 failed\n"
           }, 
           "Test 1": {
             "Status": "Failed", 
-            "Stderr": "robot.dx not defined, please check whether you have assigned value for robot.dx\n"
+            "Stderr": "[ERROR]: IK_EulerAngles test 1 failed\n"
           }
         }, 
         "comments": [
