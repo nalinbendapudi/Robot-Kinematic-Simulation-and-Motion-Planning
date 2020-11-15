@@ -80,12 +80,19 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
 	
 	// Find EE position in world frame
 	var endeffector_xform = robot.joints[endeffector_joint].xform;
-	var endeffector_position_world = matrix_multiply(endeffector_xform, endeffector_position_local);
+	var endeffector_position_world = matrix_multiply(endeffector_xform, endeffector_position_local);	// 4X1
+	var endeffector_orientation_world = extractEulerAngles(endeffector_xform);							// 3X1
 	
 	// Find difference between desired and current pos of EE
-	var delta = vector_subtract(vectorize(endeffector_target_world.position), vectorize(endeffector_position_world));
-	robot.dx = [[delta[0]], [delta[1]], [delta[2]], [0], [0], [0]];
-    
+	var delta_position = vector_subtract(vectorize(endeffector_target_world.position), vectorize(endeffector_position_world));	// Array(4)
+	var delta_orientation = vector_subtract(vectorize(endeffector_target_world.orientation), vectorize(endeffector_orientation_world));	// Array(4)
+	if (kineval.params.ik_orientation_included){      
+		robot.dx = [[delta_position[0]], [delta_position[1]], [delta_position[2]], [delta_orientation[0]], [delta_orientation[1]], [delta_orientation[2]] ];	//6X1
+    }
+	else{
+		robot.dx = [[delta_position[0]], [delta_position[1]], [delta_position[2]], [0], [0], [0] ];	//6X1
+	}
+	
 	// Compute jacobian
 	robot.jacobian = compute_jacobian(jointsList);
     
@@ -99,7 +106,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     }
 
 	// Calculate joint angles
-    robot.dq = matrix_multiply(inv_jacobian, matrix_transpose([robot.dx]));
+    robot.dq = vectorize(matrix_multiply(inv_jacobian, robot.dx));		// Array(6)
 
     // Gradient Descent
     for (var j=0; j<num_joints; j++) {
@@ -123,7 +130,7 @@ function joints_hierarchy (endeffector_joint){
 
 function compute_jacobian (joints) {
 	var num_joints = joints.length;
-	endeffector_joint = joints[num_joints-1];
+	endeffector_joint = robot.joints[joints[num_joints-1]];
 	
 	jacobian = [];
 	
@@ -141,16 +148,9 @@ function compute_jacobian (joints) {
         } 
         else
         {    
-            var o_n = robot.joints[endeffector_joint].origin.xyz; // Array(3)
-            var o_n_homo = matricize(homogenize(o_n)); // 4x1
-            var o_n_homo_world = matrix_multiply(robot.joints[endeffector_joint].xform, o_n_homo); // 4x1
-
-            var o_cur = cur_joint.origin.xyz; // Array(3)
-            var o_cur_homo = matricize(homogenize(o_cur)); // 4x1
-            var o_cur_homo_world = matrix_multiply(cur_joint.xform, o_cur_homo); // 4x1
-
-            var o_delta = vector_subtract(vectorize(o_n_homo_world), vectorize(o_cur_homo_world)); // Array(4)
-            o_delta = [o_delta[0], o_delta[1], o_delta[2]]; // Array(3)
+			var o_n_homo_world = extract_translation_vector(endeffector_joint.xform)	// Array(3)
+            var o_cur_homo_world = extract_translation_vector(cur_joint.xform)	//Array(3)
+            var o_delta = vector_subtract(o_n_homo_world, o_cur_homo_world); // Array(3)
 
             var J_pos = vector_cross(vectorize(axis_world), o_delta);
             var J_rot = vectorize(axis_world);
@@ -162,4 +162,13 @@ function compute_jacobian (joints) {
     jacobian = matrix_transpose(jacobian);
     return jacobian;
 
+}
+
+function extractEulerAngles (xform) {
+	var theta1 = [Math.atan2( xform[2][1], xform[2][2])];
+    var theta3 = [Math.atan2( xform[1][0], xform[0][0])];
+    var temp = Math.pow(  Math.pow( xform[2][1], 2 ) + Math.pow( xform[2][2], 2 ) ,  0.5 );
+    var theta2=[Math.atan2(-xform[2][0],temp)];
+    var theta = [theta1,theta2,theta3];
+    return theta;
 }

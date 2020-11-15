@@ -216,12 +216,16 @@ function generate_rotation_matrix_Z (theta){
 function matrix_pseudoinverse(mat) {
     var n = mat.length;
 	var m = mat[0].length;
+	var pseudoInv = [];
 	
-	if(n>=m){
-		var pseudoInv = matrix_multiply(numeric.inv(matrix_multiply(matrix_transpose(mat),mat)),matrix_transpose(mat));
+	if(n>m){			// (A_t * A)_inv * A_t
+		pseudoInv = matrix_multiply(numeric.inv(matrix_multiply(matrix_transpose(mat),mat)),matrix_transpose(mat));
 	}
-	else{
-		var pseudoInv = matrix_multiply(matrix_transpose(mat),numeric.inv(matrix_multiply(mat,matrix_transpose(mat))));
+	else if (m<n){		// A_t * (A * A_t)_inv
+		pseudoInv = matrix_multiply(matrix_transpose(mat),numeric.inv(matrix_multiply(mat,matrix_transpose(mat))));
+	}
+	else {
+		pseudoInv = numeric.inv(mat);
 	}
 	return pseudoInv;
 }
@@ -280,4 +284,9 @@ function extract_rotation_matrix (m) {
 				[ m[2][0] , m[2][1] , m[2][2] ]
 				];
 	return rot;
+}
+
+function extract_translation_vector (m) {
+	var trans = [ m[0][3], m[1][3], m[2][3] ];
+	return trans;
 }
