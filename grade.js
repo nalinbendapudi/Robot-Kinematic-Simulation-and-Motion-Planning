@@ -1,4 +1,4 @@
-//CI grader generates report at 15-11-2020-08-23-43
+//CI grader generates report at 15-11-2020-19-09-54
 grade = 
 {
   "bnalin": {
@@ -424,8 +424,8 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error increased during iteration, implementation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -437,7 +437,7 @@ grade =
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "1 out of 3 test cases passed"
         ]
       }, 
       "IK_JPseudoInverse": {
@@ -461,19 +461,19 @@ grade =
         ]
       }, 
       "IK_EulerAngles": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_EulerAngles test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_EulerAngles test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "MotionPlan_Collision": {
