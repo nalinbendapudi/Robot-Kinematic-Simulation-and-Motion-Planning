@@ -17,34 +17,6 @@ function matrix_copy(m1) {
     return mat;
 }
 
-
-// STENCIL: reference matrix code has the following functions:
-//   matrix_multiply
-//   matrix_transpose
-//   matrix_pseudoinverse
-//   matrix_invert_affine
-//   vector_normalize
-//   vector_cross
-//   generate_identity
-//   generate_translation_matrix
-//   generate_rotation_matrix_X
-//   generate_rotation_matrix_Y
-//   generate_rotation_matrix_Z
-
-
-
-// **** Function stencils are provided below, please uncomment and implement them ****//
-
-
-
-// function matrix_invert_affine(m) {
-//     // returns 2D array that is the invert affine of 4-by-4 matrix m
-
-// }
-
-
-
-	
 function matrix_multiply (m1,m2) {
 	if(m1[0].length != m2.length)
 		console.log("matrix_multiply: matrices have incompatible sizes");
@@ -217,11 +189,11 @@ function matrix_pseudoinverse(mat) {
     var n = mat.length;
 	var m = mat[0].length;
 	var pseudoInv = [];
-	
+
 	if(n>m){			// (A_t * A)_inv * A_t
 		pseudoInv = matrix_multiply(numeric.inv(matrix_multiply(matrix_transpose(mat),mat)),matrix_transpose(mat));
 	}
-	else if (m<n){		// A_t * (A * A_t)_inv
+	else if (n<m){		// A_t * (A * A_t)_inv
 		pseudoInv = matrix_multiply(matrix_transpose(mat),numeric.inv(matrix_multiply(mat,matrix_transpose(mat))));
 	}
 	else {

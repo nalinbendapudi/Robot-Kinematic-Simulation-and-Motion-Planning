@@ -73,6 +73,13 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     // robot.dq = T(robot.jacobian) * robot.dx  // where T(robot.jacobian) means apply some transformations to the Jacobian matrix, it could be Transpose, PseudoInverse, etc.
     // dtheta = alpha * robot.dq   // alpha: step length
 	
+	/* INPUTS:
+	endeffector_target_world 	
+	- endeffector_target_world.position 	: 4X1
+	- endeffector_target_world.orientation 	: Array(3)
+	endeffector_joint						: string (name of the joint)
+	endeffector_position_local				: 4X1
+	*/
 	
 	// Get the chain of joints from base to EE
 	var jointsList = joints_hierarchy(endeffector_joint);	// jointsList contains all joints from base to end-effector joint
@@ -85,7 +92,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
 	
 	// Find difference between desired and current pos of EE
 	var delta_position = vector_subtract(vectorize(endeffector_target_world.position), vectorize(endeffector_position_world));	// Array(4)
-	var delta_orientation = vector_subtract(vectorize(endeffector_target_world.orientation), vectorize(endeffector_orientation_world));	// Array(4)
+	var delta_orientation = vector_subtract(endeffector_target_world.orientation, vectorize(endeffector_orientation_world));	// Array(3)
 	if (kineval.params.ik_orientation_included){      
 		robot.dx = [[delta_position[0]], [delta_position[1]], [delta_position[2]], [delta_orientation[0]], [delta_orientation[1]], [delta_orientation[2]] ];	//6X1
     }
@@ -94,7 +101,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
 	}
 	
 	// Compute jacobian
-	robot.jacobian = compute_jacobian(jointsList);
+	robot.jacobian = compute_jacobian(jointsList, endeffector_position_world);
     
 	// Approximate inverse of jacobian (either by pseudoinverse or transpose) 
 	if (kineval.params.ik_pseudoinverse) {
@@ -106,7 +113,7 @@ kineval.iterateIK = function iterate_inverse_kinematics(endeffector_target_world
     }
 
 	// Calculate joint angles
-    robot.dq = vectorize(matrix_multiply(inv_jacobian, robot.dx));		// Array(6)
+    robot.dq = vectorize(matrix_multiply(inv_jacobian, robot.dx));		// Array(N)	, N = num_joints 
 
     // Gradient Descent
     for (var j=0; j<num_joints; j++) {
@@ -128,7 +135,7 @@ function joints_hierarchy (endeffector_joint){
 	return vector_reverse(joints);
 }
 
-function compute_jacobian (joints) {
+function compute_jacobian (joints, endeffector_position_world) {
 	var num_joints = joints.length;
 	endeffector_joint = robot.joints[joints[num_joints-1]];
 	
@@ -144,18 +151,19 @@ function compute_jacobian (joints) {
 
         if (joint_type == "prismatic")
         {
-            jacobian[i] = [axis_world[0][0],axis_world[1][0],axis_world[2][0] , 0, 0, 0]; // Array(6)
+            var J_pos = vectorize(axis_world);	// Array(3)
+			jacobian[i] = [J_pos[0], J_pos[1], J_pos[2], 0, 0, 0]; // Array(6)
         } 
         else
         {    
-			var o_n_homo_world = extract_translation_vector(endeffector_joint.xform)	// Array(3)
-            var o_cur_homo_world = extract_translation_vector(cur_joint.xform)	//Array(3)
-            var o_delta = vector_subtract(o_n_homo_world, o_cur_homo_world); // Array(3)
+            var o_n_world = [endeffector_position_world[0][0], endeffector_position_world[1][0], endeffector_position_world[2][0]];		// Array(3)
+			var o_cur_world = extract_translation_vector(cur_joint.xform)	//Array(3)
+			var o_delta = vector_subtract(o_n_world, o_cur_world); 	// Array(3)
 
-            var J_pos = vector_cross(vectorize(axis_world), o_delta);
-            var J_rot = vectorize(axis_world);
+            var J_pos = vector_cross(vectorize(axis_world), o_delta);	// Array(3)
+            var J_rot = vectorize(axis_world);	// Array(3)
 
-            jacobian[i] = [J_pos[0], J_pos[1], J_pos[2], J_rot[0], J_rot[1], J_rot[2]];
+            jacobian[i] = [J_pos[0], J_pos[1], J_pos[2], J_rot[0], J_rot[1], J_rot[2]];	// Array(6)
         }
     }
 
