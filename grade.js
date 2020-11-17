@@ -1,4 +1,4 @@
-//CI grader generates report at 17-11-2020-12-05-18
+//CI grader generates report at 17-11-2020-18-05-08
 grade = 
 {
   "bnalin": {
@@ -405,19 +405,19 @@ grade =
         ]
       }, 
       "IK_Jacobian": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 0\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Incorrect IK Jacobian for test 1\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 2 test cases passed"
+          "2 out of 2 test cases passed"
         ]
       }, 
       "IK_JTranspose": {
@@ -444,8 +444,8 @@ grade =
         "status": "PENDING", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "Error increased during iteration, implementation incorrect\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
             "Status": "Failed", 
@@ -457,7 +457,7 @@ grade =
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "1 out of 3 test cases passed"
         ]
       }, 
       "IK_EulerAngles": {
