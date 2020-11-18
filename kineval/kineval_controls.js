@@ -39,8 +39,10 @@ kineval.applyControls = function robot_apply_controls(curRobot) {
         if (typeof joint.limit !== 'undefined') {
             if (joint.angle < joint.limit.lower) {
                 joint.angle = joint.limit.lower;
+				console.log("joint lower limit reached", x);
             } else if (joint.angle > joint.limit.upper) {
                 joint.angle = joint.limit.upper;
+				console.log("joint upper limit reached", x);
             }
         }
 
