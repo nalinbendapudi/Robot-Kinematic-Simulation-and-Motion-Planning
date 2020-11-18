@@ -1,4 +1,4 @@
-//CI grader generates report at 17-11-2020-18-05-08
+//CI grader generates report at 18-11-2020-00-06-14
 grade = 
 {
   "bnalin": {
@@ -421,43 +421,43 @@ grade =
         ]
       }, 
       "IK_JTranspose": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "IK_JPseudoInverse": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "IK_EulerAngles": {
