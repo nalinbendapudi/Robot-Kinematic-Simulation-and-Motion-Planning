@@ -1,4 +1,4 @@
-//CI grader generates report at 17-11-2020-18-05-08
+//CI grader generates report at 30-11-2020-13-08-30
 grade = 
 {
   "bnalin": {
@@ -405,7 +405,7 @@ grade =
         ]
       }, 
       "IK_Jacobian": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -417,51 +417,51 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 6/6, due day check pass, good work!"
         ]
       }, 
       "IK_JTranspose": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JTranspose test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "Point: 3/3, due day check pass, good work!"
         ]
       }, 
       "IK_JPseudoInverse": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "test results": {
           "Test 2": {
             "Status": "Succeed", 
             "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: IK_JPseudoInverse test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "1 out of 3 test cases passed"
+          "Point: 3/3, due day check pass, good work!"
         ]
       }, 
       "IK_EulerAngles": {
-        "status": "PASS", 
+        "status": "CHECK", 
         "test results": {
           "Test 0": {
             "Status": "Succeed", 
@@ -473,19 +473,51 @@ grade =
           }
         }, 
         "comments": [
-          "2 out of 2 test cases passed"
+          "Point: 6/6, due day check pass, good work!"
         ]
       }, 
       "MotionPlan_Collision": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Collision test 2 failed\n"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Collision test 0 failed\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Collision test 1 failed\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
         "status": "PENDING", 
+        "test results": {
+          "Test 2": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Search time out\n"
+          }, 
+          "Test 3": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Search time out\n"
+          }, 
+          "Test 0": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Search time out\n"
+          }, 
+          "Test 1": {
+            "Status": "Failed", 
+            "Stderr": "[ERROR]: Search time out\n"
+          }
+        }, 
         "comments": [
-          ""
+          "0 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
@@ -530,7 +562,7 @@ grade =
         "status": 4.0
       }, 
       {
-        "status": "PENDING"
+        "status": 4.0
       }, 
       {
         "status": "PENDING"
