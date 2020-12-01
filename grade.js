@@ -1,4 +1,4 @@
-//CI grader generates report at 30-11-2020-13-08-30
+//CI grader generates report at 01-12-2020-01-08-44
 grade = 
 {
   "bnalin": {
@@ -497,27 +497,27 @@ grade =
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 3": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Search time out\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 4 test cases passed"
+          "4 out of 4 test cases passed"
         ]
       }, 
       "MotionPlan_CSpaceRRTConnect": {
