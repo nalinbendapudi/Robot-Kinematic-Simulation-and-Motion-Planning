@@ -66,6 +66,8 @@ function iterateRRTConnect() {
 	if (extendRRT(T_a, q_rand) != "trapped"){
 		if (connectRRT(T_b, T_a.vertices[T_a.newest].vertex) == "reached") {
 			search_iterate = false;
+			drawHighlightedPath(dfsPath(T_a));
+			drawHighlightedPath(dfsPath(T_b));
 			return "succeeded";
 		}
 		return "extended";
@@ -77,6 +79,8 @@ function iterateRRTConnect() {
 	if (extendRRT(T_b, q_rand) != "trapped"){
 		if (connectRRT(T_a, T_b.vertices[T_b.newest].vertex) == "reached") {
 			search_iterate = false;
+			drawHighlightedPath(dfsPath(T_a));
+			drawHighlightedPath(dfsPath(T_b));
 			return "succeeded";
 		}
 		return "extended";
@@ -171,16 +175,21 @@ function extendRRT (tree, q_rand) {
 }
 
 function connectRRT (tree, q) {
-	if(tree.vertices[0].vertex[0] == q_init[0] && tree.vertices[0].vertex[1] == q_init[1])
-		console.log("tree A");
-	else if (tree.vertices[0].vertex[0] == q_goal[0] && tree.vertices[0].vertex[1] == q_goal[1])
-		console.log("tree B");
-	console.log(q);
 	extendResult = "advanced";
 	while(extendResult=="advanced"){
 		extendResult = extendRRT(tree,q);
-		console.log(extendResult);
 	}
 	return extendResult;
 }
 
+function dfsPath(tree) {
+    var path = [];
+    var curr = tree.vertices[tree.newest];
+
+    while (curr !== tree.vertices[0]) {
+        path.push(curr);
+        curr = curr.edges[0];
+    }
+    path.push(curr);
+    return path;
+}
