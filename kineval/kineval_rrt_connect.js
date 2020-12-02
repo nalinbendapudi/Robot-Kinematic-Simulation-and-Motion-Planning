@@ -92,7 +92,7 @@ kineval.planMotionRRTConnect = function motionPlanningRRTConnect() {
 }
 
 
-    // STENCIL: uncomment and complete initialization function
+// STENCIL: uncomment and complete initialization function
 kineval.robotRRTPlannerInit = function robot_rrt_planner_init() {
 
     // form configuration from base location and joint angles
@@ -125,6 +125,9 @@ kineval.robotRRTPlannerInit = function robot_rrt_planner_init() {
 
     // make sure the rrt iterations are not running faster than animation update
     cur_time = Date.now();
+	
+	T_a = tree_init(q_start_config);
+	T_b = tree_init(q_goal_config);
 }
 
 
@@ -137,19 +140,56 @@ function robot_rrt_planner_iterate() {
     if (rrt_iterate && (Date.now()-cur_time > 10)) {
         cur_time = Date.now();
 
-    // STENCIL: implement single rrt iteration here. an asynch timing mechanism 
-    //   is used instead of a for loop to avoid blocking and non-responsiveness 
-    //   in the browser.
-    //
-    //   once plan is found, highlight vertices of found path by:
-    //     tree.vertices[i].vertex[j].geom.material.color = {r:1,g:0,b:0};
-    //
-    //   provided support functions:
-    //
-    //   kineval.poseIsCollision - returns if a configuration is in collision
-    //   tree_init - creates a tree of configurations
-    //   tree_add_vertex - adds and displays new configuration vertex for a tree
-    //   tree_add_edge - adds and displays new tree edge between configurations
+		// STENCIL: implement single rrt iteration here. an asynch timing mechanism 
+		//   is used instead of a for loop to avoid blocking and non-responsiveness 
+		//   in the browser.
+		//
+		//   once plan is found, highlight vertices of found path by:
+		//     tree.vertices[i].vertex[j].geom.material.color = {r:1,g:0,b:0};
+		//
+		//   provided support functions:
+		//
+		//   kineval.poseIsCollision - returns if a configuration is in collision
+		//   tree_init - creates a tree of configurations
+		//   tree_add_vertex - adds and displays new configuration vertex for a tree
+		//   tree_add_edge - adds and displays new tree edge between configurations
+	
+		var result = "failed";
+		eps = 0.5;
+		var q_rand = randomConfig();
+		if (extendRRT(T_a, q_rand) != "trapped"){
+			if (connectRRT(T_b, T_a.vertices[T_a.newest].vertex) == "reached") {
+				// search_iterate = false;
+				// drawHighlightedPath(dfsPath(T_a));
+				// drawHighlightedPath(dfsPath(T_b));
+				pathList1 = vector_reverse(dfsPath(T_a));
+				pathList2 = dfsPath(T_b);
+				pathList = pathList1.concat(pathList2);
+				kineval.motion_plan = pathList;
+				return "reached";
+			}
+			return "extended";
+		}
+		
+		// swapping trees T_a and T_b and repeating
+		
+		var q_rand = randomConfig();
+		if (extendRRT(T_b, q_rand) != "trapped"){
+			if (connectRRT(T_a, T_b.vertices[T_b.newest].vertex) == "reached") {
+				// search_iterate = false;
+				// drawHighlightedPath(dfsPath(T_a));
+				// drawHighlightedPath(dfsPath(T_b));
+				pathList1 = vector_reverse(dfsPath(T_a));
+				pathList2 = dfsPath(T_b);
+				pathList = pathList1.concat(pathList2);
+				kineval.motion_plan = pathList;
+				return "reached";
+			}
+			return "extended";
+		}
+		
+		return result;
+	
     }
 
 }
@@ -239,6 +279,112 @@ function tree_add_edge(tree,q1_idx,q2_idx) {
 
 
 
+
+function randomConfig(){
+	
+	q_random = [];
+	
+	q_random[0] = robot_boundary[0][0] + Math.random() * (robot_boundary[1][0] - robot_boundary[0][0]);
+	q_random[1] = robot.origin.xyz[1];
+	q_random[2] = robot_boundary[0][2] + Math.random() * (robot_boundary[1][2] - robot_boundary[0][2]);
+	q_random[3] = 0
+	q_random[4] = -Math.PI + Math.random() * Math.PI * 2;
+	q_random[5] = 0
+	
+	for (var x in robot.joints) {
+		cur_joint = robot.joints[x];
+		if (cur_joint.limit === undefined){
+            q_random[q_names[x]] = -Math.PI + Math.random() * Math.PI * 2;
+		}
+		else if (cur_joint.limit !== undefined){
+            q_random[q_names[x]] = robot.joints[x].limit.lower+Math.random()*(robot.joints[x].limit.upper-robot.joints[x].limit.lower);
+		}        
+		if (cur_joint.type === "fixed"){
+			q_random[q_names[x]] = 0;
+		}
+	}
+	
+	return q_random;
+}
+
+function newConfig (q_near, q_rand) {
+	var delta_q =  vector_subtract(q_rand,q_near);
+	var dist  = vector_norm(delta_q,2);
+	// eps is defined in infrastrucutre.js, eps=0.1
+	if (dist>eps){
+		var q_new  = vector_add(q_near, vector_scalar_product (delta_q, eps/dist));
+	}
+	else{
+		var q_new = vector_copy(q_rand);
+	}
+	if (kineval.poseIsCollision(q_new)){
+		return false;
+	}
+	return q_new;
+}
+
+function distance (q1, q2) {
+	var delta_q =  vector_subtract(q1,q2);
+	var dist  = vector_norm(delta_q,2);
+	return dist;
+}
+
+function findNearestNeighbor (tree, q_rand) {
+	var dist_nearest = Number.POSITIVE_INFINITY;
+    var nearest_idx = 0;
+    for (var i=0; i<tree.vertices.length; i++) {
+        var node = tree.vertices[i]
+		var dist_to_rand = distance(node.vertex, q_rand);
+        if (dist_to_rand < dist_nearest) {
+            dist_nearest = dist_to_rand;
+            q_near = node.vertex;
+            nearest_idx = i;
+        }
+    }
+    return [nearest_idx, q_near];
+}
+
+function extendRRT (tree, q_rand) {
+	var q_near_info = findNearestNeighbor(tree, q_rand);
+	var q_near = q_near_info[1];
+	var q_near_idx = q_near_info[0];
+	var q_new = newConfig(q_near, q_rand);
+	if (q_new === false){
+		return "trapped";
+	}
+	else{
+		tree_add_vertex(tree, q_new);
+		tree_add_edge(tree, q_near_idx, tree.newest);
+		if(vector_norm(vector_subtract(q_rand, q_new),2) == 0) {	// basically if q_rand == q_new (vectors should be equal)
+			return "reached";
+		}
+		else{
+			return "advanced";
+		}
+	}
+}
+
+function connectRRT (tree, q) {
+	extendResult = "advanced";
+	while(extendResult=="advanced"){
+		extendResult = extendRRT(tree,q);
+	}
+	return extendResult;
+}
+
+function dfsPath(tree) {
+    var path = [];
+    var curr = tree.vertices[tree.newest];
+
+    while (curr !== tree.vertices[0]) {
+        curr.geom.material.color = {r:1,g:0,b:0};
+		path.push(curr);
+        curr = curr.edges[0];
+    }
+	curr.geom.material.color = {r:1,g:0,b:0};
+    path.push(curr);
+    return path;
+}
 
 
 

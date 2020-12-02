@@ -17,6 +17,18 @@ function matrix_copy(m1) {
     return mat;
 }
 
+function vector_copy(v) {
+
+    var vec = [];
+    var i;
+
+    for (i=0;i<v.length;i++) { 
+            vec[i] = v[i];
+    }
+    return vec;
+}
+
+
 function matrix_multiply (m1,m2) {
 	if(m1[0].length != m2.length)
 		console.log("matrix_multiply: matrices have incompatible sizes");
@@ -60,6 +72,15 @@ function vector_normalize (v1){
 		vec[i] = v1[i]/norm;
 	}
 	return vec;
+}
+
+function vector_norm (v,n) {
+	var norm = 0;
+	for (var i=0; i<v.length; i++){
+		norm += Math.pow(v[i],n);
+	}
+	norm = Math.pow(norm, 1.0/n);
+	return norm;
 }
 
 function vector_cross (v1, v2){
@@ -235,7 +256,18 @@ function vector_subtract (v1,v2) {
 	var n = v1.length;
 	var vec = [];
 	for (var i=0; i<n; i++){
-		vec[i] = v1[i]-v2[i];
+		vec[i] = v1[i] - v2[i];
+	}
+	return vec;
+}
+
+function vector_add (v1,v2) {
+	if(v1.length != v2.length)
+		console.log("vector_subtract: vectors of different size");
+	var n = v1.length;
+	var vec = [];
+	for (var i=0; i<n; i++){
+		vec[i] = v1[i] + v2[i];
 	}
 	return vec;
 }
