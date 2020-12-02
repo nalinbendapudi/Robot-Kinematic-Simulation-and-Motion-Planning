@@ -1,4 +1,4 @@
-//CI grader generates report at 01-12-2020-13-04-27
+//CI grader generates report at 02-12-2020-01-01-13
 grade = 
 {
   "bnalin": {
@@ -477,23 +477,23 @@ grade =
         ]
       }, 
       "MotionPlan_Collision": {
-        "status": "PENDING", 
+        "status": "PASS", 
         "test results": {
           "Test 2": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 2 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 0": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 0 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }, 
           "Test 1": {
-            "Status": "Failed", 
-            "Stderr": "[ERROR]: Collision test 1 failed\n"
+            "Status": "Succeed", 
+            "Stderr": ""
           }
         }, 
         "comments": [
-          "0 out of 3 test cases passed"
+          "3 out of 3 test cases passed"
         ]
       }, 
       "MotionPlan_2DRRTConnect": {
