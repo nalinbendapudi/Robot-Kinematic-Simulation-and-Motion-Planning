@@ -168,7 +168,7 @@ function robot_collision_forward_kinematics(q){
 	
 	var T  = generate_translation_matrix(q[0], q[1], q[2]);
 	var Rz = generate_rotation_matrix_Z(q[5]);
-	var Ry = generate_rotation_matrix_Y(q[3]);
+	var Ry = generate_rotation_matrix_Y(q[4]);
 	var Rx = generate_rotation_matrix_X(q[3]);
 	var R  = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
     var mstack = matrix_multiply(T,R);
