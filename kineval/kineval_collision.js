@@ -55,7 +55,7 @@ kineval.poseIsCollision = function robot_collision_test(q) {
 
     // traverse robot kinematics to test each body for collision
     // STENCIL: implement forward kinematics for collision detection
-    //return robot_collision_forward_kinematics(q);
+    return robot_collision_forward_kinematics(q);
 
 }
 
@@ -130,6 +130,58 @@ function traverse_collision_forward_kinematics_link(link,mstack,q) {
     // return false, when no collision detected for this link and children 
     return false;
 }
+
+function traverse_collision_forward_kinematics_joint(joint,mstack,q) {
+	
+	var xyz = joint.origin.xyz;
+	var rpy = joint.origin.rpy;
+	
+	var T  = generate_translation_matrix(xyz[0], xyz[1], xyz[2]);
+	var Rz = generate_rotation_matrix_Z(rpy[2]);
+	var Ry = generate_rotation_matrix_Y(rpy[1]);
+	var Rx = generate_rotation_matrix_X(rpy[0]);
+	var R  = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
+	
+	var angle = q[q_names[joint.name]];
+	var axis = joint.axis;
+    var joint_movement;
+    
+	if (typeof joint.type == "undefined" || joint.type == "revolute" || joint.type == "continuous") {
+        var quat = kineval.quaternionFromAxisAngle(axis, angle);
+        quat = kineval.quaternionNormalize(quat);
+        joint_movement = kineval.quaternionToRotationMatrix(quat);
+    } 
+	else if (joint.type == "prismatic") {
+        var trans = vector_scalar_product(axis, angle);
+        joint_movement = generate_translation_matrix(trans[0], trans[1], trans[2]);
+    } 
+	else {
+        joint_movement = generate_identity();
+    }
+	
+	mstack = matrix_multiply( matrix_multiply(mstack,matrix_multiply(T,R)), joint_movement);
+	
+	return traverse_collision_forward_kinematics_link (robot.links[joint.child], mstack, q);
+}
+
+function robot_collision_forward_kinematics(q){
+	
+	var T  = generate_translation_matrix(q[0], q[1], q[2]);
+	var Rz = generate_rotation_matrix_Z(q[5]);
+	var Ry = generate_rotation_matrix_Y(q[3]);
+	var Rx = generate_rotation_matrix_X(q[3]);
+	var R  = matrix_multiply(Rz, matrix_multiply(Ry,Rx));
+    var mstack = matrix_multiply(T,R);
+    if (robot.links_geom_imported) {
+        var mAdjust = matrix_multiply(generate_rotation_matrix_Y( -Math.PI / 2 ),generate_rotation_matrix_X( - Math.PI / 2 ));
+        mstack = matrix_multiply(mstack, mAdjust);
+    }
+    return traverse_collision_forward_kinematics_link(robot.links[robot.base], mstack, q);
+}
+
+
+
+
 
 
 
