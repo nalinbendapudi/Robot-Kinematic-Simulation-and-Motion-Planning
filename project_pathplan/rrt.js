@@ -91,6 +91,49 @@ function iterateRRTConnect() {
 
 function iterateRRTStar() {
 	
+	var tree = T_a;
+	
+	var exploit = Math.random();
+	
+	if (distance(tree.vertices[tree.newest].vertex,q_goal) < eps|| exploit < 0.1){
+		var q_rand = [q_goal[0],q_goal[1]];
+	}
+	else{
+		var q_rand = randomConfig();
+	}
+	
+	var q_nearest_info = findNearestNeighbor(tree, q_rand);
+	var q_nearest_idx = q_nearest_info[0];
+	var q_nearest = q_nearest_info[1];
+	
+	var q_new = newConfig(q_nearest, q_rand);
+	if (q_new !== false){
+		insertTreeVertex(tree, q_new);
+		
+		//CHOOSE PARENT
+		var q_nbr_indices = nearbyVertices(tree,q_new,eps*2);
+		var q_parent_info = chooseParent(tree,q_nbr_indices,q_new);
+		var q_parent_idx = q_parent_info[0];
+		var q_new_cost = q_parent_info[1];
+		// insertTreeEdge(tree, q_parent_idx, tree.newest);
+		tree.costs.push(q_new_cost);
+		tree.parents.push(q_parent_idx);
+		
+		//REWIRE
+		rewire(tree,q_nbr_indices,q_new);
+	
+		//RETURN
+		if (q_new[0]==q_goal[0] && q_new[1]==q_goal[1]){
+			search_iterate = false;
+			drawHighlightedPath(dfsPathStar(tree));
+			return "succeeded";
+		}
+		return "extended";
+	}
+	else {
+		return "failed"
+	}
+
 }
 
 //////////////////////////////////////////////////
@@ -193,3 +236,55 @@ function dfsPath(tree) {
     path.push(curr);
     return path;
 }
+
+
+// RRT-STAR FUNCTIONS
+
+function nearbyVertices(tree,q_new,nbr_radius) {
+	var nbr_indices = []
+	for (var i=0; i<tree.vertices.length; i++){
+		if ( distance(q_new, tree.vertices[i].vertex) < nbr_radius ){
+			nbr_indices.push(i);
+		}
+	}
+	return nbr_indices;
+}
+
+function chooseParent(tree, nbr_indices, q_new){
+	var min_cost = Number.POSITIVE_INFINITY;
+	for(var i=0; i<nbr_indices.length; i++){
+		var j = nbr_indices[i];
+		if(tree.costs[j] + distance(tree.vertices[j].vertex,q_new) < min_cost){
+			if(/*TODO check for obstacle at mid-point*/true){
+				min_cost = tree.costs[j] + distance(tree.vertices[j].vertex,q_new);
+				var parent_idx = j; 
+			}
+		}
+	}
+	return [parent_idx, min_cost];
+}
+
+function rewire(tree,nbr_indices,q_new){
+	for(var i=0; i<nbr_indices.length; i++){
+		var j = nbr_indices[i];
+		if(tree.costs[tree.newest] + distance(tree.vertices[j].vertex, q_new) < tree.costs[j] ){
+			if(/*TODO check for obstacle at mid-point*/true){
+				tree.costs[j] =  tree.costs[q_new] + distance(tree.vertices[j].vertex, q_new);
+				tree.parents[j] = tree.newest;
+			}
+		}
+	}
+}
+
+function dfsPathStar(tree){
+	var curr_idx = tree.newest;
+	var path = [];
+
+    while (curr_idx !== 0) {
+        path.push(tree.vertices[curr_idx]);
+		curr_idx = tree.parents[curr_idx];
+    }
+    path.push(tree.vertices[curr_idx]);	
+    return path;
+}
+

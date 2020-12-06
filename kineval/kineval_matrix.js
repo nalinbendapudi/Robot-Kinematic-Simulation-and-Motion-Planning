@@ -77,7 +77,7 @@ function vector_normalize (v1){
 function vector_norm (v,n) {
 	var norm = 0;
 	for (var i=0; i<v.length; i++){
-		norm += Math.pow(v[i],n);
+		norm += Math.pow(Math.abs(v[i]),n);
 	}
 	norm = Math.pow(norm, 1.0/n);
 	return norm;

@@ -68,9 +68,14 @@ function initRRT(q) {
 
     // initialize with vertex for given configuration
     tree.vertices = [];
+	tree.parents = [];
+	tree.costs = [];
+	
     tree.vertices[0] = {};
     tree.vertices[0].vertex = q;
     tree.vertices[0].edges = [];
+	tree.parents.push(-1);
+	tree.costs.push(0);
 
     // maintain index of newest vertex added to tree
     tree.newest = 0;
@@ -209,7 +214,7 @@ function initSearch() {
 
     // specify default eps (epsilon) spatial resolution variable
     //   for RRT, specifies threshold radius for step size and reaching goal
-    eps = 0.1;
+    eps = 0.2;
 
     // create event handlers for the mouse
     canvas = document.getElementById("myCanvas");
