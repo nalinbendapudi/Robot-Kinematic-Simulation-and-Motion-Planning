@@ -1,4 +1,4 @@
-//CI grader generates report at 02-12-2020-01-01-13
+//CI grader generates report at 06-12-2020-01-06-11
 grade = 
 {
   "bnalin": {
@@ -399,9 +399,9 @@ grade =
         ]
       }, 
       "FSMDance_Rosbridge": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 2/2, gift points"
         ]
       }, 
       "IK_Jacobian": {
@@ -533,9 +533,9 @@ grade =
         ]
       }, 
       "Pitch": {
-        "status": "PENDING", 
+        "status": "CHECK", 
         "comments": [
-          ""
+          "Point: 18/18, gift points"
         ]
       }, 
       "Pitch_Advanced": {
@@ -565,7 +565,7 @@ grade =
         "status": 4.0
       }, 
       {
-        "status": "PENDING"
+        "status": 4.0
       }
     ], 
     "participation": {
